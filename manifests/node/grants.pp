@@ -11,6 +11,7 @@ class mha::node::grants {
     scope.lookupvar('mha::node::nodes') \
       .map {|v| v['hostname'] } \
       .unshift(scope.lookupvar('mha::node::manager')) \
+      .uniq \
       .join(',')
   %>"),',')
 
