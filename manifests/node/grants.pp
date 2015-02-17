@@ -37,15 +37,19 @@ define mha::node::grants::admin (
   $user,
   $password,
 ) {
-  mysql_user { "${user}@${host}":
-    password_hash => mysql_password($password),
-  }
+  ensure_resource('mysql_user',
+    "${user}@${host}" => {
+      password_hash => mysql_password($password),
+    }
+  )
 
-  mysql_grant { "${user}@${host}/*.*":
-    user       => "${user}@${host}",
-    table      => '*.*',
-    privileges => ['ALL'],
-  }
+  ensure_resource('mysql_grant',
+    "${user}@${host}/*.*" => {
+      user       => "${user}@${host}",
+      table      => '*.*',
+      privileges => ['ALL'],
+    }
+  )
 }
 
 define mha::node::grants::repl (
@@ -53,16 +57,20 @@ define mha::node::grants::repl (
   $user,
   $password,
 ) {
-  mysql_user { "${user}@${host}":
-    password_hash => mysql_password($password),
-  }
+  ensure_resource('mysql_user',
+    "${user}@${host}" => {
+      password_hash => mysql_password($password),
+    }
+  )
 
-  mysql_grant { "${user}@${host}/*.*":
-    user       => "${user}@${host}",
-    table      => '*.*',
-    privileges => [
-      'REPLICATION SLAVE',
-      'REPLICATION CLIENT',
-    ],
-  }
+  ensure_resource('mysql_grant',
+    "${user}@${host}/*.*" => {
+      user       => "${user}@${host}",
+      table      => '*.*',
+      privileges => [
+        'REPLICATION SLAVE',
+        'REPLICATION CLIENT',
+      ],
+    }
+  )
 }
