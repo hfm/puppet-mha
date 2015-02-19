@@ -21,7 +21,7 @@ class mha::node (
   create_resources(
     'mha::ssh_keys',
     { 'mha::node' => $ssh },
-    { 'key_path' => '/root.ssh/id_mha' }, # default
+    { 'key_path' => '/root/.ssh/id_mha' }, # default
   )
 
      Service[$service_name]

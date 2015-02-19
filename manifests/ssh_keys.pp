@@ -10,6 +10,7 @@ define mha::ssh_keys (
     group   => 'root',
     mode    => '0600',
     content => $private_key,
+    require => Ssh_authorized_key[$name], # create /root/.ssh
   })
 
   ensure_resource('ssh_authorized_key', $name, {
