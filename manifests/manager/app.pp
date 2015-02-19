@@ -1,12 +1,13 @@
 define mha::manager::app (
-  $nodes         = [],
-  $user          = $mha::params::user,
-  $password      = $mha::params::password,
-  $repl_user     = $mha::params::repl_user,
-  $repl_password = $mha::params::repl_password,
-  $ssh           = $mha::params::ssh,
-  $default       = {},
-  $manage_daemon = false
+  $nodes           = [],
+  $user            = $mha::params::user,
+  $password        = $mha::params::password,
+  $repl_user       = $mha::params::repl_user,
+  $repl_password   = $mha::params::repl_password,
+  $ssh_key_path    = $mha::params::ssh_key_path,
+  $ssh_private_key = $mha::params::ssh_private_key,
+  $default         = {},
+  $manage_daemon   = false
 ) {
 
   include mha::params
@@ -25,7 +26,10 @@ define mha::manager::app (
     group   => 'root',
   }
 
-  create_resources(mha::ssh_keys, { "mha::app::${name}" => $ssh })
+  mha::ssh_private_key { "mha::manager::$name":
+    path    => $ssh_key_path,
+    content => $ssh_private_key,
+  }
 
   if $manage_daemon {
     include supervisor
