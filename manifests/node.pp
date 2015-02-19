@@ -18,11 +18,7 @@ class mha::node (
     $service_name = 'mysql'
   }
 
-  create_resources(
-    'mha::ssh_keys',
-    { 'mha::node' => $ssh },
-    { 'key_path' => '/root/.ssh/id_mha' }, # default
-  )
+  create_resources('mha::ssh_keys', { "mha::node" => $ssh })
 
      Service[$service_name]
   -> class { 'mha::node::install': version => $version }

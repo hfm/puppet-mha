@@ -25,11 +25,7 @@ define mha::manager::app (
     group   => 'root',
   }
 
-  create_resources(
-    'mha::ssh_keys',
-    { "mha::app::${name}" => $ssh },
-    { 'key_path' => "/root/.ssh/id_mha_${name}" }, # default
-  )
+  create_resources(mha::ssh_keys, { "mha::app::${name}" => $ssh })
 
   if $manage_daemon {
     include supervisor

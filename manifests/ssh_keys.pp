@@ -1,22 +1,22 @@
 define mha::ssh_keys (
-  $type,
+  $key_path,
+  $user,
   $private_key,
   $public_key,
-  $key_path,
 ) {
 
   ensure_resource('file', $key_path, {
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
-    content => $private_key,
-    require => Ssh_authorized_key[$name], # create /root/.ssh
+    source  => $private_key,
+    require => Ssh_authorized_key["mha_ssh_pub ${key_path}"]
   })
 
-  ensure_resource('ssh_authorized_key', $name, {
+  ensure_resource('ssh_authorized_key', "mha_ssh_pub ${key_path}", {
     ensure => present,
     user   => 'root',
-    type   => $type,
+    type   => 'ssh-rsa',
     key    => $public_key,
   })
 
