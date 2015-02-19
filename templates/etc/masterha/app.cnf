@@ -1,6 +1,6 @@
 [server default]
-ssh_user=<%= @ssh['user'] %>
-ssh_options='-i <%= @ssh['key_path'] %>'
+ssh_user=root
+ssh_options='-i <%= @ssh_key_path %>'
 
 user=<%= @user %>
 password=<%= @password %>
