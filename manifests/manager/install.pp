@@ -18,7 +18,7 @@ class mha::manager::install {
   package { 'mha4mysql-manager':
     ensure   => installed,
     provider => rpm,
-    source   => "https://mysql-master-ha.googlecode.com/files/mha4mysql-manager-${mha::manager::version}${::mha_pkg_suffix}",
+    source   => "http://www.mysql.gr.jp/frame/modules/bwiki/index.php?plugin=attach&pcmd=open&file=mha4mysql-manager-${mha::manager::version}${::mha_pkg_suffix}&refer=matsunobu",
     require  => [
       Package[$perl_pkgs],
       Class['mha::node::install'],

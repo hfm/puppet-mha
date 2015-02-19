@@ -7,7 +7,7 @@ class mha::node::install (
   package {'mha4mysql-node':
     ensure   => installed,
     provider => rpm,
-    source   => "https://mysql-master-ha.googlecode.com/files/mha4mysql-node-${version}${::mha_pkg_suffix}",
+    source   => "http://www.mysql.gr.jp/frame/modules/bwiki/index.php?plugin=attach&pcmd=open&file=mha4mysql-node-${version}${::mha_pkg_suffix}&refer=matsunobu",
     require  => Package['perl-DBD-MySQL'],
   }
 
