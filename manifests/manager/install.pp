@@ -15,7 +15,7 @@ class mha::manager::install {
     'perl-Config-Tiny',
     'perl-Log-Dispatch',
     'perl-Parallel-ForkManager',
-    'perl-Time-HiRes',
+    'perl(Time::HiRes)',
   ]
 
   ensure_packages($perl_pkgs)
