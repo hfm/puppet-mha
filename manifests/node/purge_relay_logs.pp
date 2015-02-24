@@ -5,7 +5,7 @@ class mha::node::purge_relay_logs {
   $job = {
     'purge relay logs for MHA' => {
       user    => 'root',
-      command => "sleep \$((\$RANDOM\\%60)) && /usr/bin/purge_relay_logs --user=${mha::node::user} --password=${mha::node::password} --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1",
+      command => "sleep \$((\$RANDOM\\%60)) && /usr/bin/purge_relay_logs --host localhost --user=${mha::node::user} --password=${mha::node::password} --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1",
     }
   }
 

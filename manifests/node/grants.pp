@@ -17,7 +17,7 @@ class mha::node::grants {
 
   mha::node::grants::admin {
     # for purge_relay_logs. see mha::node::purge_relay_logs
-    '127.0.0.1':
+    'localhost':
       user     => $mha::node::user,
       password => $mha::node::password;
 
