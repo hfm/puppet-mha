@@ -1,32 +1,24 @@
 class mha::node::grants {
 
-  # [
-  #   manager,
-  #   nodes[0]['hostname'],
-  #   nodes[1]['hostname'],
-  #   ...
-  # ]
-
-  $hosts = split(inline_template("<%=
+  $nodes = split(inline_template("<%=
     scope.lookupvar('mha::node::nodes') \
       .map {|v| v['hostname'] } \
-      .unshift(scope.lookupvar('mha::node::manager')) \
-      .uniq \
       .join(',')
   %>"),',')
 
-  mha::node::grants::admin {
+  $admin_hosts = unique(flatten([
     # for purge_relay_logs. see mha::node::purge_relay_logs
-    'localhost':
-      user     => $mha::node::user,
-      password => $mha::node::password;
+    'localhost',
+    $mha::node::manager,
+    $nodes
+  ]))
 
-    $hosts:
-      user     => $mha::node::user,
-      password => $mha::node::password;
+  mha::node::grants::admin { $admin_hosts:
+    user     => $mha::node::user,
+    password => $mha::node::password;
   }
 
-  mha::node::grants::repl { $hosts:
+  mha::node::grants::repl { $nodes:
     user     => $mha::node::repl_user,
     password => $mha::node::repl_password;
   }
