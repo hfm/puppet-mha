@@ -11,12 +11,19 @@ class mha::manager::install {
     }
   }
 
-  $perl_pkgs = [
-    'perl-Config-Tiny',
-    'perl-Log-Dispatch',
-    'perl-Parallel-ForkManager',
-    'perl(Time::HiRes)',
-  ]
+  $perl_pkgs = $::operatingsystemmajrelease ? {
+    5 => [
+      'perl-Config-Tiny',
+      'perl-Log-Dispatch',
+      'perl-Parallel-ForkManager',
+    ],
+    6 => [
+      'perl-Config-Tiny',
+      'perl-Log-Dispatch',
+      'perl-Parallel-ForkManager',
+      'perl-Time-HiRes',
+    ],
+  }
 
   ensure_packages($perl_pkgs)
   ensure_packages('wget')
