@@ -27,10 +27,10 @@ class mha::node (
   }
 
   ensure_resource('ssh_authorized_key', 'mha::node', {
-    ensure => present,
-    user   => 'root',
-    type   => $ssh_key_type,
-    key    => $ssh_public_key,
+    'ensure' => 'present',
+    'user'   => 'root',
+    'type'   => $ssh_key_type,
+    'key'    => $ssh_public_key,
   })
 
      Service[$service_name]
