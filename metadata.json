@@ -31,8 +31,14 @@
     }
   ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib"},
-    {"name":"puppetlabs-mysql"},
-    {"name":"proletaryo-supervisor"}
+    {
+      "name": "puppetlabs-stdlib"
+    },
+    {
+      "name": "puppetlabs-mysql"
+    },
+    {
+      "name": "proletaryo-supervisor"
+    }
   ]
 }
