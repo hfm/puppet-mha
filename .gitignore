@@ -5,3 +5,8 @@ spec/fixtures/
 .vagrant/
 .bundle/
 coverage/
+.librarian
+.tmp
+example/modules/
+Puppetfile.lock
+spec/fixtures/
