@@ -1,11 +1,11 @@
 {
-  "name": "lamanotrama-mha",
+  "name": "hfm-mha",
   "version": "0.0.2",
-  "author": "lamanotrama",
+  "author": "hfm",
   "summary": "MHA Module",
   "license": "Apache 2.0",
-  "source": "git@github.com:lamanotrama/puppet-mha.git",
-  "project_page": "https://github.com/lamanotrama/puppet-mha",
+  "source": "git@github.com:hfm/puppet-mha.git",
+  "project_page": "https://github.com/hfm/puppet-mha",
   "issues_url": null,
   "operatingsystem_support": [
     {
