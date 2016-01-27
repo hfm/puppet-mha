@@ -30,13 +30,15 @@ define mha::node::grants::admin (
   $password,
 ) {
   ensure_resource('mysql_user',
-    "${user}@${host}" => {
+    "${user}@${host}",
+    {
       password_hash => mysql_password($password),
     }
   )
 
   ensure_resource('mysql_grant',
-    "${user}@${host}/*.*" => {
+    "${user}@${host}/*.*",
+    {
       user       => "${user}@${host}",
       table      => '*.*',
       privileges => ['ALL'],
@@ -50,13 +52,15 @@ define mha::node::grants::repl (
   $password,
 ) {
   ensure_resource('mysql_user',
-    "${user}@${host}" => {
+    "${user}@${host}",
+    {
       password_hash => mysql_password($password),
     }
   )
 
   ensure_resource('mysql_grant',
-    "${user}@${host}/*.*" => {
+    "${user}@${host}/*.*",
+    {
       user       => "${user}@${host}",
       table      => '*.*',
       privileges => [
