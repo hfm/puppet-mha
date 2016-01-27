@@ -21,12 +21,12 @@ define mha::manager::app (
 
   file { $config:
     content => template('mha/etc/masterha/app.cnf'),
-    mode    => 600,
+    mode    => '0600',
     owner   => 'root',
     group   => 'root',
   }
 
-  mha::ssh_private_key { "mha::manager::$name":
+  mha::ssh_private_key { "mha::manager::${name}":
     path    => $ssh_key_path,
     content => $ssh_private_key,
   }

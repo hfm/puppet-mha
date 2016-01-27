@@ -33,7 +33,7 @@ class mha::node (
     'key'    => $ssh_public_key,
   })
 
-     Service[$service_name]
+  Service[$service_name]
   -> class { 'mha::node::install': version => $version }
   -> class { 'mha::node::grants': }
   -> class { 'mha::node::purge_relay_logs': }
