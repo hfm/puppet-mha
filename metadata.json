@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "author": "hfm",
   "summary": "MHA Module",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "git@github.com:hfm/puppet-mha.git",
   "project_page": "https://github.com/hfm/puppet-mha",
   "issues_url": null,
