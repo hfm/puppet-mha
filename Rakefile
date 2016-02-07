@@ -1,5 +1,6 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
+require 'puppet_blacksmith/rake_tasks'
 
 desc "Validate manifests, templates, and ruby files"
 task :validate do
@@ -12,8 +13,4 @@ task :validate do
   Dir['templates/**/*.erb'].each do |template|
     sh "erb -P -x -T '-' #{template} | ruby -c"
   end
-end
-
-unless Bundler.settings.without.include?(:development)
-  require 'puppet_blacksmith/rake_tasks'
 end
