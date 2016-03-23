@@ -30,7 +30,8 @@ class mha::manager::install {
 
   # Because the rpm command on centos5 is failed.
   exec { 'download mha-manager':
-    command => "/usr/bin/wget -O ${download_path} \"${source_url}\"",
+    command => "wget -O ${download_path} \"${source_url}\"",
+    path    => ['/bin', '/usr/bin', '/usr/local/bin'],
     creates => $download_path,
     require => Package['wget'],
   }
