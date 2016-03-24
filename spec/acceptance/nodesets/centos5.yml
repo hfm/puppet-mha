@@ -1,5 +1,5 @@
 HOSTS:
-  centos6:
+  centos5:
     platform: el-5-x86_64
     image: centos:5
     hypervisor: docker
