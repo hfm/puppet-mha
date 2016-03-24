@@ -23,14 +23,14 @@ describe 'mha::node class' do
     it { should be_mode 755 }
   end
 
-  perl_pkgs = case os[:release]
-              when '5'
+  perl_pkgs = case os[:release].to_i
+              when 5
                 [
                   'perl-Config-Tiny',
                   'perl-Log-Dispatch',
                   'perl-Parallel-ForkManager'
                 ]
-              when '6'
+              when 6
                 [
                   'perl-Config-Tiny',
                   'perl-Log-Dispatch',
