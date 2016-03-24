@@ -1,5 +1,11 @@
 require 'beaker-rspec'
 
+hosts.each do |host|
+  if host.platform.version.to_i == 5
+    on(host, 'curl -OL http://yum.puppetlabs.com/puppetlabs-release-pc1-el-5.noarch.rpm && rpm -ivh puppetlabs-release-pc1-el-5.noarch.rpm')
+  end
+end
+
 # Install Puppet agent on all hosts
 install_puppet_agent_on(hosts, {})
 
