@@ -5,7 +5,7 @@ HOSTS:
     hypervisor: docker
     docker_cmd: '["/sbin/init"]'
     docker_image_commands:
-      - 'yum -y install gcc tar'
+      - 'yum -y install gcc tar wget'
 CONFIG:
   type: foss
   masterless: true

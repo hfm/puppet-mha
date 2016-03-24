@@ -28,14 +28,12 @@ class mha::manager::install {
   }
 
   ensure_packages($perl_pkgs)
-  ensure_packages('wget')
 
   # Because the rpm command on centos5 is failed.
   exec { 'download mha-manager':
     command => "wget -O ${download_path} \"${source_url}\"",
     path    => ['/bin', '/usr/bin', '/usr/local/bin'],
     creates => $download_path,
-    require => Package['wget'],
   }
 
   package { 'mha4mysql-manager':
