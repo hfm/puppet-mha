@@ -1,21 +1,20 @@
 language: ruby
-rvm:
-- 2.0.0
-- 2.3.0
 cache: bundler
-bundler_args: "--jobs=3 --retry=3 --without=development"
-before_script: bundle exec puppet --version
 script:
 - bundle exec rake lint
 - bundle exec rake validate
 # - bundle exec rake spec
-env:
-- PUPPET_VERSION='~> 3.8.0'
-- PUPPET_VERSION='~> 4.3.0'
 matrix:
-  exclude:
-  - rvm: 2.3.0
+  include:
+  - rvm: 2.0.0
     env: PUPPET_VERSION='~> 3.8.0'
+  - rvm: 2.3.0
+    env: PUPPET_VERSION='~> 4.4.0'
+  - rvm: default
+    sudo: required
+    services: docker
+    env: BEAKER_set=centos6
+    script: bundle exec rake beaker
 notifications:
   slack:
     secure: C3W8TSWkV7XO2jwN6RwL8fgE70zzsnoiMrtwfJ2S9aGLqU0RdbTPOdt1ZQ4kBR3raCefj9Nnin4VurlwfQwYu/uPvV18K6090Ut7bP8wIqH6bF4jmNx68wY9YRybmSFbCpVgtwYT8lfXK6S/s9ns1yYN9qOMg8Bfs5LvXAOWfnAjE6vw8iEU1tFTYQeH3kQZRXdskH4sz3pq0JmTo5CQKBCwgMI9+DjXBALam+wgzT/cpelm+JIWzsHNFbld770JAO6gYdYd5EJOoP5058tZwt558HctFHNEE19XClKpmlwZWpbfSDiwTgQXc6b1mvQ0D3DJxynMKMU/2QbuaNM8tN9F8yvJNuXiGiXc65KCO4Rz+a1JbgsugHuwhvXRvw85aZ6hIAfWk4sRkAiuB6cMruSju4H8cb6R4v7FdHmBMaCZtUb97pNZ08r8HOpU3hg06S6FwEaUOnLfBAtt6+Fpr5233h47/JNaL9o+BG0zqZL9GfnyCdcM1inKicH55ZniCH4vL7KudvCj1CS2jktaqRuQboMrZPH3NjESY2RoyjrF5tbzJVATHQ7v8MdFJS8mBYjNCNGVVY7YNwlRZ27fauTbwgfh+vQX4RQH/msQ0IFzqK1K6ftL6TUtTRmg3KgjszdOIOIEz3QDotkVuIfrsKIPh3N/ZqdBFb9QbC8edjc=
