@@ -1,0 +1,12 @@
+HOSTS:
+  centos6:
+    platform: el-5-x86_64
+    image: centos:5
+    hypervisor: docker
+    docker_cmd: '["/sbin/init"]'
+    docker_image_commands:
+      - 'yum -y install gcc tar'
+CONFIG:
+  type: foss
+  masterless: true
+  # log_level: verbose
