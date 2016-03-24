@@ -15,7 +15,7 @@ RSpec.configure do |c|
     hosts.each do |host|
       on(host, puppet('module', 'install', 'puppetlabs-stdlib'))
       on(host, puppet('module', 'install', 'puppetlabs-mysql'))
-      on(host, puppet('module', 'install', 'proletaro-supervisor'))
+      on(host, puppet('module', 'install', 'proletaryo-supervisor'))
     end
   end
 end
