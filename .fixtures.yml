@@ -1,0 +1,8 @@
+fixtures:
+  forge_modules:
+    stdlib: "puppetlabs/stdlib"
+    mysql: "puppetlabs/mysql"
+    supervisor: "proletaryo/supervisor"
+    epel: "stahnma/epel"
+  symlinks:
+    mha: "#{source_dir}"
