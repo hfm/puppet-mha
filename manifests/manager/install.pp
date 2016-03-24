@@ -1,5 +1,7 @@
 class mha::manager::install {
 
+  require ::epel
+
   $ensure        = "${mha::manager::version}.el${::operatingsystemmajrelease}"
   $rpm           = "mha4mysql-manager-${ensure}.noarch.rpm"
   $source_url    = "http://www.mysql.gr.jp/frame/modules/bwiki/index.php?plugin=attach&pcmd=open&file=${rpm}&refer=matsunobu"
