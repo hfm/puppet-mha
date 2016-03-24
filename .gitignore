@@ -1,12 +1,25 @@
-pkg/
-Gemfile.lock
-vendor/
+# spec
 spec/fixtures/
+
+# Environment normalization
+/.bundle/
+/vendor/bundle
+
+/lib/bundler/man/
+
+# for a library or gem, you might want to ignore these files since the code is
+Gemfile.lock
+
+# Vagrant
 .vagrant/
-.bundle/
-coverage/
+
+# Beaker
+log/
+junit/
+
+## Vagrant
+tests/modules/*
+!tests/modules/.keep
+Puppetfile.lock
 .librarian
 .tmp
-example/modules/
-Puppetfile.lock
-spec/fixtures/
