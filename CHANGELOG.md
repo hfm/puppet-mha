@@ -1,3 +1,9 @@
+Release 0.0.6 (2016/03/25)
+---
+
+- [698281d](https://github.com/hfm/puppet-mha/commit/698281d) Fix: remove wget package from mha::node
+- [d77bf06](https://github.com/hfm/puppet-mha/commit/d77bf06) Newer MHA versions (from 0.56) will be hosted on Google Drive instead.
+
 Release 0.0.5 (2016/03/25)
 ---
 
