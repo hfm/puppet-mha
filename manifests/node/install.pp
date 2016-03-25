@@ -4,7 +4,7 @@ class mha::node::install (
 
   $ensure        = "${version}.el${::operatingsystemmajrelease}"
   $rpm           = "mha4mysql-node-${ensure}.noarch.rpm"
-  $source_url    = "http://www.mysql.gr.jp/frame/modules/bwiki/index.php?plugin=attach&pcmd=open&file=${rpm}&refer=matsunobu"
+  $source_url    = "https://72003f4c60f5cc941cd1c7d448fc3c99e0aebaa8.googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/${rpm}"
   $download_path = "/usr/local/src/${rpm}"
 
   ensure_packages(['perl-DBD-MySQL', 'wget'])
