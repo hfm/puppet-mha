@@ -3,7 +3,15 @@ require 'spec_helper_acceptance'
 describe 'mha::node class' do
   let(:manifest) {
     <<-EOS
-      include '::mha::manager'
+      case $::operatingsystemmajrelease {
+        '6': { include '::mha::manager' }
+        '7': {
+          class { '::mha::manager':
+            version      => '0.57-0',
+            node_version => '0.57-0',
+          }
+        }
+      }
     EOS
   }
 
@@ -36,6 +44,12 @@ describe 'mha::node class' do
                   'perl-Log-Dispatch',
                   'perl-Parallel-ForkManager',
                   'perl-Time-HiRes',
+                ]
+              when 7
+                [
+                  'perl-Config-Tiny',
+                  'perl-Log-Dispatch',
+                  'perl-Parallel-ForkManager',
                 ]
               end
 
