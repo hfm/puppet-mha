@@ -1,3 +1,10 @@
+Release 0.0.8 (2016/03/26)
+---
+
+- [10d1a4d](https://github.com/hfm/puppet-mha/commit/10d1a4d) Add packages for CentOS7
+  - Now mha4mysql-manager can be installed for CentOS7.
+  - mha4mysql-node can also.
+
 Release 0.0.7 (2016/03/26)
 ---
 
