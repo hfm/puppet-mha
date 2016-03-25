@@ -1,6 +1,6 @@
 {
   "name": "hfm-mha",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "hfm",
   "summary": "Install and Configure MHA for MySQL",
   "license": "Apache-2.0",
