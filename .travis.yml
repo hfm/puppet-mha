@@ -3,7 +3,7 @@ cache: bundler
 script:
 - bundle exec rake lint
 - bundle exec rake validate
-# - bundle exec rake spec
+- bundle exec rake spec
 matrix:
   include:
   - rvm: 2.0.0
