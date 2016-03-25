@@ -1,3 +1,8 @@
+Release 0.0.7 (2016/03/26)
+---
+
+- [18709fa](https://github.com/hfm/puppet-mha/commit/18709fa) Stop using ensure\_resource()
+
 Release 0.0.6 (2016/03/25)
 ---
 
