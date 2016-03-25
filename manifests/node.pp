@@ -21,17 +21,18 @@ class mha::node (
     $service_name = 'mysql'
   }
 
+  ssh_authorized_key { 'mha::node':
+    ensure => present,
+    user   => 'root',
+    type   => $ssh_key_type,
+    key    => $ssh_public_key,
+  }
+
   mha::ssh_private_key { 'mha::node':
     path    => $ssh_key_path,
     content => $ssh_private_key,
+    require => Ssh_authorized_key['mha::node'],
   }
-
-  ensure_resource('ssh_authorized_key', 'mha::node', {
-    'ensure' => 'present',
-    'user'   => 'root',
-    'type'   => $ssh_key_type,
-    'key'    => $ssh_public_key,
-  })
 
   Service[$service_name]
   -> class { 'mha::node::install': version => $version }
