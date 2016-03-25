@@ -1,11 +1,5 @@
 require 'beaker-rspec'
 
-hosts.each do |host|
-  if host.platform.version.to_i == 5
-    on(host, 'echo "nameserver 8.8.8.8" >> /etc/resolv.conf')
-  end
-end
-
 # Install Puppet agent on all hosts
 install_puppet_agent_on(hosts, {})
 
