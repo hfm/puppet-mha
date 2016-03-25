@@ -12,18 +12,19 @@ define mha::manager::app (
 
   include mha::params
 
-  $config = "/etc/masterha/${name}.cnf"
-
-  ensure_resource('file', '/etc/masterha', {
+  file {
+    '/etc/masterha':
     ensure => directory,
-    mode   => 755,
-  })
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755';
 
-  file { $config:
+  "/etc/masterha/${name}.cnf":
+    ensure  => present,
     content => template('mha/etc/masterha/app.cnf'),
     mode    => '0600',
     owner   => 'root',
-    group   => 'root',
+    group   => 'root';
   }
 
   mha::ssh_private_key { "mha::manager::${name}":
@@ -37,7 +38,7 @@ define mha::manager::app (
     supervisor::program { "masterha_manager_${name}":
       ensure                 => present,
       enable                 => true,
-      command                => "/usr/bin/masterha_manager --conf=${config}",
+      command                => "/usr/bin/masterha_manager --conf=/etc/masterha/${name}.cnf",
       startsecs              => 10,
       autorestart            => true,
       user                   => 'root',
@@ -51,4 +52,3 @@ define mha::manager::app (
   }
 
 }
-
