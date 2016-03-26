@@ -4,4 +4,5 @@
 :yaml:
   :datadir: "/vagrant/%{::environment}/hieradata"
 :hierarchy:
+  - "%{::osfamily}%{::operatingsystemmajrelease}"
   - common
