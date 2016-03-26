@@ -10,7 +10,7 @@
 # Whether the mysql_online_switch script should exist.
 #
 class mha::manager::script (
-  $ensure = present,
+  $ensure = $mha::manager::script_ensure,
 ) {
 
   file { '/usr/bin/mysql_online_switch':
