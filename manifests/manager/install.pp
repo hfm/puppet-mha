@@ -36,7 +36,7 @@ class mha::manager::install {
 
   # Because the rpm command on centos5 is failed.
   exec { 'download mha-manager':
-    command => "curl -L -o ${download_path} \"${source_url}\"",
+    command => "curl -L -o ${download_path} '${source_url}'",
     path    => ['/bin', '/usr/bin', '/usr/local/bin'],
     creates => $download_path,
   }
