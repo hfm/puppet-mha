@@ -4,6 +4,9 @@ class mha::manager (
   $script_ensure = $mha::params::script_ensure,
 ) inherits mha::params {
 
+  validate_re($version, '^\d+\.\d+-\d+$', "${version} is not supported for version. This parameter should be like '0.57-0'.")
+  validate_re($node_version, '^\d+\.\d+-\d+$', "${node_version} is not supported for node_version. This parameter should be like '0.57-0'.")
+
   include mha::manager::install
   include mha::manager::script
 
