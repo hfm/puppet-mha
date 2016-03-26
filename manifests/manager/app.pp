@@ -14,7 +14,7 @@ define mha::manager::app (
 
   file { "/etc/masterha/${name}.cnf":
     ensure  => present,
-    content => template('mha/app.cnf'),
+    content => template('mha/app.cnf.erb'),
     mode    => '0600',
     owner   => 'root',
     group   => 'root',
