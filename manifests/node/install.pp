@@ -1,5 +1,5 @@
 class mha::node::install (
-  $version
+  $version = mha::node::version,
 ) {
 
   $ensure        = "${version}.el${::operatingsystemmajrelease}"
