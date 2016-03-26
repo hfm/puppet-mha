@@ -3,6 +3,8 @@ class mha::params {
   $manager_version = '0.56-0'
   $node_version    = '0.56-0'
 
+  $script_ensure = present
+
   $user     = 'root'
   $password = ''
 
