@@ -10,6 +10,7 @@ describe 'mha::manager' do
     it { should contain_class('mha::manager::script') }
 
     it { should contain_file('/usr/bin/mysql_online_switch').with_ensure('present') }
+    it { should contain_file('/etc/masterha').with_ensure('directory') }
   end
 
   context 'with absent' do

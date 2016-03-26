@@ -12,19 +12,12 @@ define mha::manager::app (
 
   include mha::params
 
-  file {
-    '/etc/masterha':
-    ensure => directory,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755';
-
-  "/etc/masterha/${name}.cnf":
+  file { "/etc/masterha/${name}.cnf":
     ensure  => present,
     content => template('mha/etc/masterha/app.cnf'),
     mode    => '0600',
     owner   => 'root',
-    group   => 'root';
+    group   => 'root',
   }
 
   mha::ssh_private_key { "mha::manager::${name}":

@@ -52,4 +52,11 @@ class mha::manager::install {
     ],
   }
 
+  file { '/etc/masterha':
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+  }
+
 }
