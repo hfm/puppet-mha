@@ -23,7 +23,6 @@ class mha::node::purge_relay_logs (
   $hour   = $mha::node::cron_hour,
 ) {
 
-
   $cmd = "/usr/bin/purge_relay_logs --host localhost --user=${mha::node::user} --password=${mha::node::password} --disable_relay_log_purge"
 
   # ref: https://code.google.com/p/mysql-master-ha/wiki/Requirements#Schedule_to_run_purge_relay_logs_script
