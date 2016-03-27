@@ -26,4 +26,11 @@ class mha::node::install (
     ],
   }
 
+  file { '/var/log/masterha':
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+  }
+
 }

@@ -16,6 +16,7 @@ describe 'mha::node' do
 
     it { should contain_package('perl-DBD-MySQL') }
     it { should contain_package('mha4mysql-node') }
+    it { should contain_file('/var/log/masterha').with_ensure('directory') }
   end
 
   # context 'with absent' do
