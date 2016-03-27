@@ -10,7 +10,10 @@ class mha::node (
   $ssh_key_type    = $mha::params::ssh_key_type,
   $ssh_public_key  = $mha::params::ssh_public_key,
   $ssh_private_key = $mha::params::ssh_private_key,
-  $purge_relay_logs_schedule = $mha::params::purge_relay_logs_schedule,
+  $cron_ensure     = $mha::params::purge_relay_logs_ensure,
+  $cron_user       = $mha::params::purge_relay_logs_user,
+  $cron_minute     = $mha::params::purge_relay_logs_minute,
+  $cron_hour       = $mha::params::purge_relay_logs_hour,
 ) inherits mha::params {
 
   ssh_authorized_key { 'mha::node':

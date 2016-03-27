@@ -11,10 +11,10 @@ class mha::params {
   $repl_user     = 'repl'
   $repl_password = ''
 
-  $purge_relay_logs_schedule = {
-    minute => 10,
-    hour   => '2-23/6', # 2,8,14,20
-  }
+  $purge_relay_logs_ensure = present
+  $purge_relay_logs_user   = 'root'
+  $purge_relay_logs_minute = '10'
+  $purge_relay_logs_hour   = '2-23/6' # 2,8,14,20
 
   $ssh_key_path    = '/root/.ssh/id_mha'
   $ssh_key_type    = 'rsa'
