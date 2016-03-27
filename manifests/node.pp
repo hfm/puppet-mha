@@ -29,8 +29,8 @@ class mha::node (
     require => Ssh_authorized_key['mha::node'],
   }
 
-  class { 'mha::node::install': version => $version }
-  -> class { 'mha::node::grants': }
-  -> class { 'mha::node::purge_relay_logs': }
+  include 'mha::node::install'
+  include 'mha::node::grants'
+  include 'mha::node::purge_relay_logs'
 
 }
