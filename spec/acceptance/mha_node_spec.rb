@@ -57,6 +57,6 @@ describe 'mha::node class' do
   end
 
   describe cron('purge relay logs for MHA') do
-    it { should be_has_entry('10 2-23/6 * * * sleep $(($RANDOM\%60)) && /usr/bin/purge_relay_logs --host localhost --user=root --password= --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1').with_user('root') }
+    it { should have_entry('10 2-23/6 * * * sleep $(($RANDOM\%60)) && /usr/bin/purge_relay_logs --host localhost --user=root --password= --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1').with_user('root') }
   end
 end
