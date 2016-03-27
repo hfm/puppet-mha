@@ -1,7 +1,16 @@
 class mha::params {
 
-  $manager_version = '0.56-0'
-  $node_version    = '0.56-0'
+  $manager_version = $::operatingsystemmajrelease ? {
+    '5' => '0.56-0',
+    '6' => '0.56-0',
+    '7' => '0.57-0',
+  }
+
+  $node_version = $::operatingsystemmajrelease ? {
+    '5' => '0.56-0',
+    '6' => '0.56-0',
+    '7' => '0.57-0',
+  }
 
   $script_ensure = present
 
