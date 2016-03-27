@@ -14,4 +14,3 @@ class mha::node::purge_relay_logs {
   create_resources(cron, $job, $default)
 
 }
-
