@@ -10,16 +10,11 @@ class mha::node (
   $ssh_key_type    = $mha::params::ssh_key_type,
   $ssh_public_key  = $mha::params::ssh_public_key,
   $ssh_private_key = $mha::params::ssh_private_key,
-  $purge_relay_logs_schedule = $mha::params::purge_relay_logs_schedule,
+  $cron_ensure     = $mha::params::purge_relay_logs_ensure,
+  $cron_user       = $mha::params::purge_relay_logs_user,
+  $cron_minute     = $mha::params::purge_relay_logs_minute,
+  $cron_hour       = $mha::params::purge_relay_logs_hour,
 ) inherits mha::params {
-
-  # if puppetlabs-mysql is used, and mysql::server class is included with service_manage parameter(default true)
-  # ref https://github.com/puppetlabs/puppetlabs-mysql/blob/master/manifests/server/service.pp#L10
-  if $::mysql::server::real_service_manage {
-    $service_name = $::mysql::server::service_name
-  } else {
-    $service_name = 'mysql'
-  }
 
   ssh_authorized_key { 'mha::node':
     ensure => present,
@@ -34,9 +29,8 @@ class mha::node (
     require => Ssh_authorized_key['mha::node'],
   }
 
-  Service[$service_name]
-  -> class { 'mha::node::install': version => $version }
-  -> class { 'mha::node::grants': }
-  -> class { 'mha::node::purge_relay_logs': }
+  include 'mha::node::install'
+  include 'mha::node::grants'
+  include 'mha::node::purge_relay_logs'
 
 }

@@ -1,1 +1,9 @@
 ---
+mha::node::manager: centos6-manager
+mha::node::nodes:
+  - hostname: centos6-node1
+    candidate_master: 1
+  - hostname: centos6-node2
+    candidate_master: 1
+  - hostname: centos6-node3
+    candidate_master: 0
