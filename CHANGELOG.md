@@ -1,3 +1,10 @@
+Release 0.0.9 (2016/03/27)
+---
+
+- [Add the parameter to manage script #14](https://github.com/hfm/puppet-mha/pull/14)
+- [Move /etc/masterma resource to mha::manager::install class #15](https://github.com/hfm/puppet-mha/pull/15)
+- [Add default value to the version of mha::node::install class #16](https://github.com/hfm/puppet-mha/pull/16)
+
 Release 0.0.8 (2016/03/26)
 ---
 

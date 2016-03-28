@@ -1,0 +1,3 @@
+---
+mha::manager::version: '0.57-0'
+mha::manager::node_version: '0.57-0'
