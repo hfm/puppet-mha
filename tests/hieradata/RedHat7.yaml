@@ -1,3 +1,14 @@
 ---
-mha::manager::version: '0.57-0'
-mha::manager::node_version: '0.57-0'
+mha::node::manager: centos7-manager
+mha::node::nodes:
+  - hostname: centos7-node1
+    candidate_master: 1
+  - hostname: centos7-node2
+    candidate_master: 1
+  - hostname: centos7-node3
+    candidate_master: 0
+
+mha::node::user: mha
+mha::node::password: admin
+mha::node::repl_user: repl
+mha::node::repl_password: repl

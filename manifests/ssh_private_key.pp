@@ -3,6 +3,8 @@ define mha::ssh_private_key (
   $content,
 ) {
 
+  validate_absolute_path($path)
+
   file { $path:
     owner   => 'root',
     group   => 'root',

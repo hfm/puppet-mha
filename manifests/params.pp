@@ -1,7 +1,16 @@
 class mha::params {
 
-  $manager_version = '0.56-0'
-  $node_version    = '0.56-0'
+  $manager_version = $::operatingsystemmajrelease ? {
+    '5' => '0.56-0',
+    '6' => '0.56-0',
+    '7' => '0.57-0',
+  }
+
+  $node_version = $::operatingsystemmajrelease ? {
+    '5' => '0.56-0',
+    '6' => '0.56-0',
+    '7' => '0.57-0',
+  }
 
   $script_ensure = present
 
@@ -11,10 +20,10 @@ class mha::params {
   $repl_user     = 'repl'
   $repl_password = ''
 
-  $purge_relay_logs_schedule = {
-    minute => 10,
-    hour   => '2-23/6', # 2,8,14,20
-  }
+  $purge_relay_logs_ensure = present
+  $purge_relay_logs_user   = 'root'
+  $purge_relay_logs_minute = '10'
+  $purge_relay_logs_hour   = '2-23/6' # 2,8,14,20
 
   $ssh_key_path    = '/root/.ssh/id_mha'
   $ssh_key_type    = 'rsa'
@@ -49,4 +58,3 @@ vsTLvLSpURCF6XLRL/u0WxavQk9pr5hvJVahu6xGpToe3/8uH+vH
 '
 
 }
-

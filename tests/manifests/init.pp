@@ -15,6 +15,12 @@ case $::hostname {
     include 'mha::manager'
   }
   /node\d+/: {
+    class { '::mysql::server':
+      root_password           => 'admin',
+      remove_default_accounts => true,
+      before                  => Class['mha::node'],
+    }
+
     include 'mha::node'
   }
   default: {
