@@ -1,3 +1,14 @@
+Release 0.0.11 (2016/05/31)
+---
+
+- [Make ssh configuration more customizable by vide](https://github.com/hfm/puppet-mha/pull/18)
+  - Add params of [ssh\_user](https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_user) and [ssh\_port](https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_port)
+
+Release 0.0.10 (2016/03/28)
+---
+
+- [Update mha::node classes](https://github.com/hfm/puppet-mha/pull/17)
+
 Release 0.0.9 (2016/03/27)
 ---
 
