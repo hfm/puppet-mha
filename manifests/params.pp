@@ -25,6 +25,9 @@ class mha::params {
   $purge_relay_logs_minute = '10'
   $purge_relay_logs_hour   = '2-23/6' # 2,8,14,20
 
+  $ping_interval = '3'
+  $ping_type     = 'SELECT'
+
   $ssh_user        = 'root'
   $ssh_port        = '22'
   $ssh_key_path    = '/root/.ssh/id_mha'
