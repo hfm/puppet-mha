@@ -4,6 +4,8 @@ define mha::manager::app (
   $password        = $mha::params::password,
   $repl_user       = $mha::params::repl_user,
   $repl_password   = $mha::params::repl_password,
+  $ping_interval   = $mha::params::ping_interval,
+  $ping_type       = $mha::params::ping_type,
   $ssh_user        = $mha::params::ssh_user,
   $ssh_port        = $mha::params::ssh_port,
   $ssh_key_path    = $mha::params::ssh_key_path,
