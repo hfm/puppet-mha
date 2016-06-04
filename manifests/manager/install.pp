@@ -14,18 +14,12 @@ class mha::manager::install {
   }
 
   $perl_pkgs = $::operatingsystemmajrelease ? {
-    '5' => [
+    '5'     => [
       'perl-Config-Tiny',
       'perl-Log-Dispatch',
       'perl-Parallel-ForkManager',
     ],
-    '6' => [
-      'perl-Config-Tiny',
-      'perl-Log-Dispatch',
-      'perl-Parallel-ForkManager',
-      'perl-Time-HiRes',
-    ],
-    '7' => [
+    default => [
       'perl-Config-Tiny',
       'perl-Log-Dispatch',
       'perl-Parallel-ForkManager',
