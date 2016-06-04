@@ -126,59 +126,63 @@ mha::node::ssh_public_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4
 
 ### Public Classes
 
-- [`mha::manager`](#mhamanager): Installs and configures mha4mysql-manager.
-- [`mha::manager::app`](#mhamanagerapp): Installs and configures mha4mysql-manager.
-- [`mha::node`](#mhaclient): Installs and configures mha4mysql-node and .
+#### `mha::manager`
+
+Install and configure mha4mysql-manager.
+
+- `version`: Specify a mha4mysql-manager version. Valid values is 'x.y-z' like '0.57-0'.
+- `node_version`: Specify a mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
+- `script_ensure`: Whether the mysql\_online\_switch script should exist. Default to present.
+
+#### `mha::manager::app`
+
+Install and configure mha4mysql-manager.
+
+#### `mha::node`
+
+Install and configure mha4mysql-node and .
+
+- `manager`: 
+- `version`: Specify a mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
+- `nodes`: []
+- `user`: $mha::params::user
+- `password`: $mha::params::password
+- `repl_user`: $mha::params::repl_user
+- `repl_password`: $mha::params::repl_password
+- `ssh_key_path`: $mha::params::ssh_key_path
+- `ssh_key_type`: $mha::params::ssh_key_type
+- `ssh_public_key`: $mha::params::ssh_public_key
+- `ssh_private_key`: $mha::params::ssh_private_key
+- `cron_ensure`: Whether the cron job should be in. Default to present.
+- `cron_user`: The user who owns the cron job. This user must be allowed to run this job. Default to 'root'.
+- `cron_minute`: The minute at which to run the cron job. Default to '10'.
+- `cron_hour`: The hour at which to run the cron job. Default to '2-23/6'.
 
 ### Private Classes
 
-- `mha::manager::install`: Install mha4mysql-manager.
+- `mha::manager::install`: Install mha4mysql-manager package.
 - `mha::manager::script`: Install `/usr/bin/mysql_online_switch`.
-- `mha::node::grants`: 
-- `mha::node::install`: 
+- `mha::node::grants`: Create grant permissions to access MySQL for administrator and replicator.
+- `mha::node::install`: Install mha4mysql-node package.
 - `mha::node::purge_relay_logs`: Configure the cron job to run purge\_relay\_logs script.
-- `mha::node::grants::admin`: 
-- `mha::node::grants::repl`: 
 
 ### Defined Types
 
-- `mha::manager::users`: Specifies a MHA users configuration file.
-- `mha::manager::groups`: Specifies a MHA groups configuration file.
+#### `mha::node::grants::admin`
 
-### Parameters
+Create grant permissions to access MySQL for administrator.
 
-#### Class: `mha::manager`
+- `user`: The user for an administrator. Default: undef.
+- `password`: The password for $user. Default: undef.
+- `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
 
-- `port`: Specifies a listen port listen. Valid options: a number of a port number. Default: 1104.
-- `user`: Specifies a user for authentication. Valid options: a string containing a valid username. Default: 'undef'.
-- `password`: Specifies a password for authentication. Valid options: a string containing a valid password. Default: 'undef'.
+#### `mha::node::grants::repl`
 
-#### Class: `mha::node`
+Create grant permissions to access MySQL for replicator.
 
-- `api_end_point`: Valid options: Default: 'http://localhost:1104'.
-- `user`: Specifies a user for authentication. Valid options: a string containing a valid username. Default: 'undef'.
-- `password`: Specifies a password for authentication. Valid options: a string containing a valid password. Default: 'undef'.
-- `wrapper_path`: Valid options: absolute path. Default: '/usr/local/bin/mha-query-wrapper'.
-- `chain_ssh_wrapper`: Default: 'undef'.
-- `ssl_verify`: Enables SSL verification. Valid options: a boolean. Default: true.
-- `handle_nsswitch`: Configure nsswitch.conf to use MHA. Valid options: a boolean. Default: false.
-- `handle_sshd_config`: Configure sshd\_config to use MHA. Valid options: a boolean. Default: false.
-
-#### Defined Types: `mha::manager::users`
-
-- `id`: Specifies the user ID. Valid options: a number type. Default: undef.
-- `group_id`: Specifies the user's primary group. Valid options: a number type. Default: undef.
-- `directory`: Specifies the home directory of the user. Valid options: a string containing a valid path. Default: `/home/<resource title>`.
-- `shell`: Specifies the user's login shell. Valid options: a string containing a valid path. Default: `/bin/bash`.
-- `keys`: Specify user attributes in an array of key = value pairs. Valid options: a string containing a valid key = value pairs. Default: undef.
-- `link_users`: Valid options: a string containing a valid password. Default: undef.
-
-#### Defined Types: `mha::manager::groups`
-
-- `id`: Specifies the group ID. Valid options: a number type. Default: undef.
-- `users`: Specifies the members of the group. Valid options: a string containing a valid password. Default: undef.
-
-##### Parameters
+- `user`: The user for a replicator. Default: undef.
+- `password`: The password for $user. Default: undef.
+- `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
 
 ## Limitations
 
