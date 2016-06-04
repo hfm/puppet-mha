@@ -18,7 +18,6 @@ puppet-mha
   - [Public Classes](#public-classes)
   - [Private Classes](#private-classes)
   - [Defined Types](#defined-types)
-  - [Parameters](#parameters)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
   - [Running tests](#running-tests)
@@ -128,31 +127,27 @@ mha::node::ssh_public_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4
 
 #### `mha::manager`
 
-Install and configure mha4mysql-manager.
+Install and configure mha4mysql-manager, and install the mysql\_online\_switch script.
 
 - `version`: Specify a mha4mysql-manager version. Valid values is 'x.y-z' like '0.57-0'.
 - `node_version`: Specify a mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
 - `script_ensure`: Whether the mysql\_online\_switch script should exist. Default to present.
 
-#### `mha::manager::app`
-
-Install and configure mha4mysql-manager.
-
 #### `mha::node`
 
-Install and configure mha4mysql-node and .
+Install and configure mha4mysql-node, create grant permissions to access MySQL for administrator and replicator, configure the cron job to run purge\_relay\_logs script, and install a ssh key-pair.
 
-- `manager`: 
-- `version`: Specify a mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
-- `nodes`: []
-- `user`: $mha::params::user
-- `password`: $mha::params::password
-- `repl_user`: $mha::params::repl_user
-- `repl_password`: $mha::params::repl_password
-- `ssh_key_path`: $mha::params::ssh_key_path
-- `ssh_key_type`: $mha::params::ssh_key_type
-- `ssh_public_key`: $mha::params::ssh_public_key
-- `ssh_private_key`: $mha::params::ssh_private_key
+- `manager`: Specify the host for mha4mysql-manager. Default to undef.
+- `version`: Specify the mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
+- `nodes`: Specify the hostname or ip address of the target MySQL server. Default to [].
+- `user`: The MySQL administrative database username. Default: 'root'.
+- `password`: The MySQL password of the "$user" user. Default to '' (empty).
+- `repl_user`: The MySQL replication username. Default to 'repl'.
+- `repl_password`: The MySQL password of the repl user. Default: '' (empty).
+- `ssh_key_type`: The encryption type used.
+- `ssh_public_key`: The public key itself.
+- `ssh_key_path`: The path to the private key.
+- `ssh_private_key`: The private key itself.
 - `cron_ensure`: Whether the cron job should be in. Default to present.
 - `cron_user`: The user who owns the cron job. This user must be allowed to run this job. Default to 'root'.
 - `cron_minute`: The minute at which to run the cron job. Default to '10'.
@@ -161,28 +156,46 @@ Install and configure mha4mysql-node and .
 ### Private Classes
 
 - `mha::manager::install`: Install mha4mysql-manager package.
-- `mha::manager::script`: Install `/usr/bin/mysql_online_switch`.
+- `mha::manager::script`: Install mysql\_online\_switch.
 - `mha::node::grants`: Create grant permissions to access MySQL for administrator and replicator.
 - `mha::node::install`: Install mha4mysql-node package.
 - `mha::node::purge_relay_logs`: Configure the cron job to run purge\_relay\_logs script.
 
 ### Defined Types
 
+#### `mha::manager::app`
+
+Set up an application configuration file.
+
+- `nodes`: Specify the hostname or ip address of the target MySQL server. Default to [].
+- `user`: The MySQL administrative database username. Default: 'root'.
+- `password`: The MySQL password of the "$user" user. Default to '' (empty).
+- `repl_user`: The MySQL replication username. Default to 'repl'.
+- `repl_password`: The MySQL password of the repl user. Default: '' (empty).
+- `ping_interval`: Default to '3'.
+- `ping_type`: Default to 'SELECT'.
+- `ssh_user`: Default to 'root'.
+- `ssh_port`: Default to '22'.
+- `ssh_key_path`: The path to the private key. Default to '/root/.ssh/id\_mha',
+- `ssh_private_key`: The private key itself.
+- `default`: Default to {}.
+- `manage_daemon`: Default to false.
+
 #### `mha::node::grants::admin`
 
 Create grant permissions to access MySQL for administrator.
 
-- `user`: The user for an administrator. Default: undef.
-- `password`: The password for $user. Default: undef.
 - `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
+- `user`: The MySQL administrative database username. Default: undef.
+- `password`: The MySQL password of the "$user" user.  Default: undef.
 
 #### `mha::node::grants::repl`
 
 Create grant permissions to access MySQL for replicator.
 
-- `user`: The user for a replicator. Default: undef.
-- `password`: The password for $user. Default: undef.
 - `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
+- `user`: The MySQL replication username. Default: undef.
+- `password`: The MySQL password of the repl user. Default: undef.
 
 ## Limitations
 
