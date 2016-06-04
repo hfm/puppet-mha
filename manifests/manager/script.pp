@@ -13,6 +13,8 @@ class mha::manager::script (
   $ensure = $mha::manager::script_ensure,
 ) {
 
+  validate_re($ensure, '\A(absent|present)\Z')
+
   file { '/usr/bin/mysql_online_switch':
     ensure => $ensure,
     source => 'puppet:///modules/mha/mysql_online_switch',
