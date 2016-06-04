@@ -126,14 +126,14 @@ mha::node::ssh_public_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4
 
 ### Public Classes
 
-- [`mha::manager`](#mhamanager): Installs and configures MHA.
-- [`mha::node`](#mhaclient): Installs and configures libnss\_mha and libpam\_mha.
+- [`mha::manager`](#mhamanager): Installs and configures mha4mysql-manager.
+- [`mha::manager::app`](#mhamanagerapp): Installs and configures mha4mysql-manager.
+- [`mha::node`](#mhaclient): Installs and configures mha4mysql-node and .
 
 ### Private Classes
 
-- `mha::repo`: Setup MHA repository.
 - `mha::manager::install`: Install mha4mysql-manager.
-- `mha::manager::script`: Install MHA.
+- `mha::manager::script`: Install `/usr/bin/mysql_online_switch`.
 - `mha::node::install`: Installs packages for libnss\_mha and libpam\_mha.
 - `mha::node::config`: Configures
 
