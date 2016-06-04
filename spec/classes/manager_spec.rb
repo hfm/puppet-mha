@@ -42,18 +42,12 @@ describe 'mha::manager' do
           perl-Log-Dispatch
           perl-Parallel-ForkManager
         )
-      when 6
+      else
         %w(
           perl-Config-Tiny
           perl-Log-Dispatch
           perl-Parallel-ForkManager
           perl-Time-HiRes
-        )
-      when 7
-        %w(
-          perl-Config-Tiny
-          perl-Log-Dispatch
-          perl-Parallel-ForkManager
         )
       end.each do |perl_pkg|
         it { should contain_package(perl_pkg) }
