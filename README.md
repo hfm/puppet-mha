@@ -134,8 +134,11 @@ mha::node::ssh_public_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4
 
 - `mha::manager::install`: Install mha4mysql-manager.
 - `mha::manager::script`: Install `/usr/bin/mysql_online_switch`.
-- `mha::node::install`: Installs packages for libnss\_mha and libpam\_mha.
-- `mha::node::config`: Configures
+- `mha::node::grants`: 
+- `mha::node::install`: 
+- `mha::node::purge_relay_logs`: Configure the cron job to run purge\_relay\_logs script.
+- `mha::node::grants::admin`: 
+- `mha::node::grants::repl`: 
 
 ### Defined Types
 
