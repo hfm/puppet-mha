@@ -1,19 +1,19 @@
 # == Class: mha::node::purge_relay_logs
 #
-# This class configure the schedule the cron job to run purge_relay_logs script.
+# This class configure the cron job to run purge_relay_logs script.
 #
 # === Parameters
 #
 # * `ensure`
 # Whether the cron job should be in. Default to present.
 #
-# * `cron_user`
+# * `user`
 # The user who owns the cron job. This user must be allowed to run this job. Default to 'root'.
 #
-# * `cron_minute`
+# * `minute`
 # The minute at which to run the cron job. Default to '10'.
 
-# * `cron_hour`
+# * `hour`
 # The hour at which to run the cron job. Default to '2-23/6'.
 #
 class mha::node::purge_relay_logs (
