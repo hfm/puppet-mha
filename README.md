@@ -41,13 +41,13 @@ The MHA module requires the following puppet modules:
 
 ### Beginning with MHA
 
-To install the MHA manager with default parameters, declare the `mha::manager` class.
+To install the mha4mysql-manager with default parameters, declare the `mha::manager` class.
 
 ```puppet
 include '::mha::manager'
 ```
 
-To install the MHA node (libnss\_mha and libpam\_mha) with default parameters, declare the `mha::node` class.
+To install the mha4mysql-node with default parameters, declare the `mha::node` class.
 
 ```puppet
 include '::mha::node'
@@ -87,11 +87,11 @@ class { '::mha::node':
       'hostname'         => 'node003.example.com',
     },
   ],
-  ssh_key_path    => '/etc/masterha/key/private.key',
   ssh_private_key => '-----BEGIN RSA PRIVATE KEY-----
 ...
 -----END RSA PRIVATE KEY-----',
-  ssh_public_key  => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4LY0gIgyF3Jex20KwTFT67aoNGxAvjRSsg9d+c0/sxq0oBZSdgLoRrlnSu226mvv89E6dnc61JFbJpWN6et8qTW75e2/cU/DIe2vS3nTBcBvgj23oF2c5Wv7Vy2FacdDXaLa7tKmAnetI7FT+0IwmR7FMCvREmOqn4eCTkoUNXdLHqkQ0f2SSYBUUyno68nUM1bXgc63bQU8T1tr8kZ2t3NHpAa8YEYraKbCltsBkyqr7FExe5o23RyML4NuKfa1UllJhZO3IrQgbiAXsIFZpEqbcL8tObQ55nQIrNzZEvHoDN7K7jZP4WdjfTF26xSqJ+LrlGsRV',
+  ssh_key_type    => 'ssh-rsa',
+  ssh_public_key  => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4LY0gIgyF3Jex20KwTFT67aoNGxAvjRSsg9d+c0/sxq0oBZSdgLoRrlnSu226mvv89E6dnc61JFbJpWN6et8qTW75e2/cU/DIe2vS3nTBcBvgj23oF2c5Wv7Vy2FacdDXaLa7tKmAnetI7FT+0IwmR7FMCvREmOqn4eCTkoUNXdLHqkQ0f2SSYBUUyno68nUM1bXgc63bQU8T1tr8kZ2t3NHpAa8YEYraKbCltsBkyqr7FExe5o23RyML4NuKfa1UllJhZO3IrQgbiAXsIFZpEqbcL8tObQ55nQIrNzZEvHoDN7K7jZP4WdjfTF26xSqJ+LrlGsRV',
 }
 ```
 
@@ -113,12 +113,12 @@ mha::node::nodes:
   - hostname: 'node002.example.com'
     candidate_master: 1
   - hostname: 'node003.example.com'
-mha::node::ssh_key_path: '/etc/masterha/key/private.key'
+mha::node::ssh_key_type: 'ssh-rsa'
+mha::node::ssh_public_key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4LY0gIgyF3Jex20KwTFT67aoNGxAvjRSsg9d+c0/sxq0oBZSdgLoRrlnSu226mvv89E6dnc61JFbJpWN6et8qTW75e2/cU/DIe2vS3nTBcBvgj23oF2c5Wv7Vy2FacdDXaLa7tKmAnetI7FT+0IwmR7FMCvREmOqn4eCTkoUNXdLHqkQ0f2SSYBUUyno68nUM1bXgc63bQU8T1tr8kZ2t3NHpAa8YEYraKbCltsBkyqr7FExe5o23RyML4NuKfa1UllJhZO3IrQgbiAXsIFZpEqbcL8tObQ55nQIrNzZEvHoDN7K7jZP4WdjfTF26xSqJ+LrlGsRV'
 mha::node::ssh_private_key: |
 -----BEGIN RSA PRIVATE KEY-----
 ...
 -----END RSA PRIVATE KEY-----
-mha::node::ssh_public_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtnFFI/ICCBmr4LY0gIgyF3Jex20KwTFT67aoNGxAvjRSsg9d+c0/sxq0oBZSdgLoRrlnSu226mvv89E6dnc61JFbJpWN6et8qTW75e2/cU/DIe2vS3nTBcBvgj23oF2c5Wv7Vy2FacdDXaLa7tKmAnetI7FT+0IwmR7FMCvREmOqn4eCTkoUNXdLHqkQ0f2SSYBUUyno68nUM1bXgc63bQU8T1tr8kZ2t3NHpAa8YEYraKbCltsBkyqr7FExe5o23RyML4NuKfa1UllJhZO3IrQgbiAXsIFZpEqbcL8tObQ55nQIrNzZEvHoDN7K7jZP4WdjfTF26xSqJ+LrlGsRV'
 ```
 
 ## Reference
