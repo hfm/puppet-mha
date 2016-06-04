@@ -10,7 +10,7 @@
 # Whether the mysql_online_switch script should exist.
 #
 class mha::manager::script (
-  $ensure = $mha::manager::script_ensure,
+  $ensure = present,
 ) {
 
   validate_re($ensure, '\A(absent|present)\Z')

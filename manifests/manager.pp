@@ -8,6 +8,9 @@ class mha::manager (
   validate_re($node_version, '^\d+\.\d+-\d+$', "${node_version} is not supported for node_version. This parameter should be like '0.57-0'.")
 
   include mha::manager::install
-  include mha::manager::script
+
+  class { 'mha::manager::script':
+    ensure => $script_ensure,
+  }
 
 }
