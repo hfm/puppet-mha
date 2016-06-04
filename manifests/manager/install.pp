@@ -29,6 +29,7 @@ class mha::manager::install {
       'perl-Config-Tiny',
       'perl-Log-Dispatch',
       'perl-Parallel-ForkManager',
+      'perl-Time-HiRes',
     ],
   }
 
