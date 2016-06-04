@@ -13,26 +13,11 @@ class mha::manager::install {
     }
   }
 
-  $perl_pkgs = $::operatingsystemmajrelease ? {
-    '5' => [
-      'perl-Config-Tiny',
-      'perl-Log-Dispatch',
-      'perl-Parallel-ForkManager',
-    ],
-    '6' => [
-      'perl-Config-Tiny',
-      'perl-Log-Dispatch',
-      'perl-Parallel-ForkManager',
-      'perl-Time-HiRes',
-    ],
-    '7' => [
-      'perl-Config-Tiny',
-      'perl-Log-Dispatch',
-      'perl-Parallel-ForkManager',
-    ],
+  if $::operatingsystemmajrelease == '5' {
+    ensure_packages(['perl-Config-Tiny', 'perl-Log-Dispatch', 'perl-Parallel-ForkManager'])
+  } else {
+    ensure_packages(['perl-Config-Tiny', 'perl-Log-Dispatch', 'perl-Parallel-ForkManager', 'perl-Time-HiRes'])
   }
-
-  ensure_packages($perl_pkgs)
 
   # Because the rpm command on centos5 is failed.
   exec { 'download mha-manager':
