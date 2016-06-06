@@ -134,25 +134,21 @@ Install and configure mha4mysql-manager.
 - `node_version`: Specify a mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
 - `script_ensure`: Whether the mysql\_online\_switch script should exist. Default to present.
 
-#### `mha::manager::app`
-
-Install and configure mha4mysql-manager.
-
 #### `mha::node`
 
 Install and configure mha4mysql-node and .
 
-- `manager`: 
+- `manager`: The hostname of mha manager.
 - `version`: Specify a mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
-- `nodes`: []
-- `user`: $mha::params::user
-- `password`: $mha::params::password
-- `repl_user`: $mha::params::repl_user
-- `repl_password`: $mha::params::repl_password
-- `ssh_key_path`: $mha::params::ssh_key_path
-- `ssh_key_type`: $mha::params::ssh_key_type
-- `ssh_public_key`: $mha::params::ssh_public_key
-- `ssh_private_key`: $mha::params::ssh_private_key
+- `nodes`: The array of the target MySQL servers that include hostname or IP address, or candidate\_master. Default to [].
+- `user`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#user. Default to 'repl'.
+- `password`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#password. Default to 'repl'.
+- `repl_user`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_user. Default to 'repl'.
+- `repl_password`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_password. Default to '' (empty).
+- `ssh_key_path`: The path to the private key to manage. Default to '/root/.ssh/id_mha'.
+- `ssh_key_type`: The encryption type used as the same as [Ssh_authorized_key type attributes](https://docs.puppet.com/puppet/latest/reference/types/ssh_authorized_key.html#ssh_authorized_key-attribute-type).
+- `ssh_public_key`: The public key itself as the same as [Ssh_authorized_key key attributes](https://docs.puppet.com/puppet/latest/reference/types/ssh_authorized_key.html#ssh_authorized_key-attribute-key).
+- `ssh_private_key`: The private key itself. See also [./manifests/params.pp](manifests/params.pp).
 - `cron_ensure`: Whether the cron job should be in. Default to present.
 - `cron_user`: The user who owns the cron job. This user must be allowed to run this job. Default to 'root'.
 - `cron_minute`: The minute at which to run the cron job. Default to '10'.
@@ -167,6 +163,24 @@ Install and configure mha4mysql-node and .
 - `mha::node::purge_relay_logs`: Configure the cron job to run purge\_relay\_logs script.
 
 ### Defined Types
+
+#### `mha::manager::app`
+
+Install and configure mha4mysql-manager.
+
+- `nodes`: The array of the target MySQL servers that include hostname or IP address, or candidate\_master. Default to [].
+- `user`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#user. Default to 'repl'.
+- `password`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#password. Default to 'repl'.
+- `repl_user`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_user. Default to 'repl'.
+- `repl_password`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_password. Default to '' (empty).
+- `ping_interval`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#ping_interval. Default to '3'.
+- `ping_type`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#ping_type. Default to 'SELECT'.
+- `ssh_user`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_user. Default to 'root'.
+- `ssh_port`: See also: https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_port. Default to '22'.
+- `ssh_key_path`: The path to the private key to manage. Default to '/root/.ssh/id_mha'.
+- `ssh_private_key`: The private key itself. See also [./manifests/params.pp](manifests/params.pp).
+- `default`: Other parameters. Default to {}.
+- `manage_daemon`: Whether the masterha\_manager program should be managed by suporvisord. Default to false.
 
 #### `mha::node::grants::admin`
 
