@@ -168,34 +168,34 @@ Install and configure mha4mysql-node, create grant permissions to access MySQL f
 Set up an application configuration file.
 
 - `nodes`: Specify the hostname or ip address of the target MySQL server. Default to [].
-- `user`: The MySQL administrative database username. Default: 'root'.
-- `password`: The MySQL password of the "$user" user. Default to '' (empty).
-- `repl_user`: The MySQL replication username. Default to 'repl'.
-- `repl_password`: The MySQL password of the repl user. Default: '' (empty).
-- `ping_interval`: Default to '3'.
-- `ping_type`: Default to 'SELECT'.
-- `ssh_user`: Default to 'root'.
-- `ssh_port`: Default to '22'.
+- `user`: The MySQL administrative database username. See https://code.google.com/p/mysql-master-ha/wiki/Parameters#user. Default: 'root'.
+- `password`: The MySQL password of the "$user" user. See https://code.google.com/p/mysql-master-ha/wiki/Parameters#password. Default to '' (empty).
+- `repl_user`: The MySQL replication username. See https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_user. Default to 'repl'.
+- `repl_password`: The MySQL password of the repl user. See https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_password. Default: '' (empty).
+- `ping_interval`: See https://code.google.com/p/mysql-master-ha/wiki/Parameters#ping_interval. Default to '3'.
+- `ping_type`: See https://code.google.com/p/mysql-master-ha/wiki/Parameters#ping_type. Default to 'SELECT'.
+- `ssh_user`: See https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_user. Default to 'root'.
+- `ssh_port`: See https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_port. Default to '22'.
 - `ssh_key_path`: The path to the private key. Default to '/root/.ssh/id\_mha',
 - `ssh_private_key`: The private key itself.
-- `default`: Default to {}.
-- `manage_daemon`: Default to false.
+- `default`: Parameters for [server default] block. Default to {}.
+- `manage_daemon`: Whether the masterha\_manager program should be daemonized with supervisord. Default to false.
 
 #### `mha::node::grants::admin`
 
 Create grant permissions to access MySQL for administrator.
 
-- `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
 - `user`: The MySQL administrative database username. Default: undef.
 - `password`: The MySQL password of the "$user" user.  Default: undef.
+- `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
 
 #### `mha::node::grants::repl`
 
 Create grant permissions to access MySQL for replicator.
 
-- `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
 - `user`: The MySQL replication username. Default: undef.
 - `password`: The MySQL password of the repl user. Default: undef.
+- `host`: The host to use as part of user@host for grants. Default is a resource name (`$name`).
 
 ## Limitations
 
