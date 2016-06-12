@@ -139,15 +139,15 @@ Install and configure mha4mysql-node, create grant permissions to access MySQL f
 
 - `manager`: Specify the host for mha4mysql-manager. Default to undef.
 - `version`: Specify the mha4mysql-node version. Valid values is 'x.y-z' like '0.57-0'.
-- `nodes`: Specify the hostname or ip address of the target MySQL server. Default to [].
-- `user`: The MySQL administrative database username. Default: 'root'.
-- `password`: The MySQL password of the "$user" user. Default to '' (empty).
-- `repl_user`: The MySQL replication username. Default to 'repl'.
-- `repl_password`: The MySQL password of the repl user. Default: '' (empty).
-- `ssh_key_type`: The encryption type used.
-- `ssh_public_key`: The public key itself.
-- `ssh_key_path`: The path to the private key.
-- `ssh_private_key`: The private key itself.
+- `nodes`: Specify The array of the target MySQL servers that include hostname or IP address, or candidate\_master. Default to [].
+- `user`: The MySQL administrative database username ([ref](https://code.google.com/p/mysql-master-ha/wiki/Parameters#user)). Default: 'root'.
+- `password`: The MySQL password of the "$user" user ([ref](https://code.google.com/p/mysql-master-ha/wiki/Parameters#password)). Default to '' (empty).
+- `repl_user`: The MySQL replication username ([ref](https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_user)). Default to 'repl'.
+- `repl_password`: The MySQL password of the repl user ([ref](https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_password)). Default: '' (empty).
+- `ssh_key_type`: The encryption type used ([ref](https://docs.puppet.com/puppet/latest/reference/types/ssh_authorized_key.html#ssh_authorized_key-attribute-type)).
+- `ssh_public_key`: The public key itself as the same as [Ssh_authorized_key key attributes](https://docs.puppet.com/puppet/latest/reference/types/ssh_authorized_key.html#ssh_authorized_key-attribute-key).
+- `ssh_key_path`: The path to the private key to manage. Default to '/root/.ssh/id\_mha'.
+- `ssh_private_key`: The private key itself. See also [./manifests/params.pp](manifests/params.pp).
 - `cron_ensure`: Whether the cron job should be in. Default to present.
 - `cron_user`: The user who owns the cron job. This user must be allowed to run this job. Default to 'root'.
 - `cron_minute`: The minute at which to run the cron job. Default to '10'.
@@ -165,9 +165,9 @@ Install and configure mha4mysql-node, create grant permissions to access MySQL f
 
 #### `mha::manager::app`
 
-Set up an application configuration file.
+Set up an application configuration file and configure mha4mysql-manager.
 
-- `nodes`: Specify the hostname or ip address of the target MySQL server. Default to [].
+- `nodes`: The array of the target MySQL servers that include hostname or IP address, or candidate\_master. Default to [].
 - `user`: The MySQL administrative database username. See https://code.google.com/p/mysql-master-ha/wiki/Parameters#user. Default: 'root'.
 - `password`: The MySQL password of the "$user" user. See https://code.google.com/p/mysql-master-ha/wiki/Parameters#password. Default to '' (empty).
 - `repl_user`: The MySQL replication username. See https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_user. Default to 'repl'.
@@ -176,10 +176,10 @@ Set up an application configuration file.
 - `ping_type`: See https://code.google.com/p/mysql-master-ha/wiki/Parameters#ping_type. Default to 'SELECT'.
 - `ssh_user`: See https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_user. Default to 'root'.
 - `ssh_port`: See https://code.google.com/p/mysql-master-ha/wiki/Parameters#ssh_port. Default to '22'.
-- `ssh_key_path`: The path to the private key. Default to '/root/.ssh/id\_mha',
-- `ssh_private_key`: The private key itself.
-- `default`: Parameters for [server default] block. Default to {}.
-- `manage_daemon`: Whether the masterha\_manager program should be daemonized with supervisord. Default to false.
+- `ssh_key_path`: The path to the private key to manage. Default to '/root/.ssh/id\_mha'.
+- `ssh_private_key`: The private key itself. See also [./manifests/params.pp](manifests/params.pp).
+- `default`: Other parameters for [server default] block. Default to {}.
+- `manage_daemon`: Whether the masterha\_manager program should be managed by suporvisord. Default to false.
 
 #### `mha::node::grants::admin`
 
