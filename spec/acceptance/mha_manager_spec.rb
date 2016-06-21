@@ -30,7 +30,7 @@ describe 'mha::manager class' do
     it { should be_mode 755 }
   end
 
-  perl_pkgs = case host_inventory['platform_version'].to_i
+  perl_pkgs = case fact('os.release.major')
               when 5
                 [
                   'perl-Config-Tiny',
