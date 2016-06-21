@@ -31,7 +31,7 @@ describe 'mha::node class' do
     it { should be_mode 755 }
   end
 
-  perl_pkgs = case os[:release].to_i
+  perl_pkgs = case host_inventory['platform_version'].to_i
               when 5
                 [
                   'perl-Config-Tiny',
