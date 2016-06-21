@@ -30,42 +30,28 @@ describe 'mha::manager class' do
     it { should be_mode 755 }
   end
 
-  perl_pkgs = case fact('os.release.major')
-              when 5
-                [
-                  'perl-Config-Tiny',
-                  'perl-Log-Dispatch',
-                  'perl-Parallel-ForkManager'
-                ]
-              when 6
-                [
-                  'perl-Config-Tiny',
-                  'perl-Log-Dispatch',
-                  'perl-Parallel-ForkManager',
-                  'perl-Time-HiRes',
-                ]
-              when 7
-                [
-                  'perl-Config-Tiny',
-                  'perl-Log-Dispatch',
-                  'perl-Parallel-ForkManager',
-                ]
-              end
+  it 'should provision' do
+    perl_pkgs = case fact('os.release.major')
+                when 5 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
+                when 6 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes)
+                when 7 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
+                end
 
-  perl_pkgs.each do |perl_pkg|
-    describe package(perl_pkg) do
+    perl_pkgs.each do |perl_pkg|
+      describe package(perl_pkg) do
+        it { should be_installed }
+      end
+    end
+
+    describe package('mha4mysql-manager') do
       it { should be_installed }
     end
-  end
 
-  describe package('mha4mysql-manager') do
-    it { should be_installed }
-  end
-
-  describe file('/etc/masterha') do
-    it { should be_directory }
-    it { should be_owned_by('root') }
-    it { should be_grouped_into('root') }
-    it { should be_mode 755 }
+    describe file('/etc/masterha') do
+      it { should be_directory }
+      it { should be_owned_by('root') }
+      it { should be_grouped_into('root') }
+      it { should be_mode 755 }
+    end
   end
 end
