@@ -16,6 +16,10 @@ define mha::manager::app (
 
   include mha::params
 
+  validate_array($nodes)
+  validate_hash($default)
+  validate_bool($manage_daemon)
+
   file { "/etc/masterha/${name}.cnf":
     ensure  => present,
     content => template('mha/app.cnf.erb'),
