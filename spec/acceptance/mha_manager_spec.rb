@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'mha::node class' do
+describe 'mha::manager class' do
   let(:manifest) {
     <<-EOS
       case $::operatingsystemmajrelease {
