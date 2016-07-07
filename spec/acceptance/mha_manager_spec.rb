@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 describe 'mha::manager class' do
-  let(:manifest) {
+  let(:manifest) do
     <<-EOS
       case $::operatingsystemmajrelease {
         '6': { include '::mha::manager' }
@@ -13,10 +13,10 @@ describe 'mha::manager class' do
         }
       }
     EOS
-  }
+  end
 
   it 'should work without errors' do
-    result = apply_manifest(manifest, :catch_failures => true)
+    result = apply_manifest(manifest, catch_failures: true)
     expect(result.exit_code).to eq 2
   end
 
@@ -30,28 +30,26 @@ describe 'mha::manager class' do
     it { should be_mode 755 }
   end
 
-  it 'should provision' do
-    perl_pkgs = case fact('os.release.major')
-                when 5 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
-                when 6 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes)
-                when 7 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
-                end
+  perl_pkgs = case os[:release].to_i
+              when 5 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
+              when 6 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes)
+              when 7 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
+              end
 
-    perl_pkgs.each do |perl_pkg|
-      describe package(perl_pkg) do
-        it { should be_installed }
-      end
-    end
-
-    describe package('mha4mysql-manager') do
+  perl_pkgs.each do |perl_pkg|
+    describe package(perl_pkg) do
       it { should be_installed }
     end
+  end
 
-    describe file('/etc/masterha') do
-      it { should be_directory }
-      it { should be_owned_by('root') }
-      it { should be_grouped_into('root') }
-      it { should be_mode 755 }
-    end
+  describe package('mha4mysql-manager') do
+    it { should be_installed }
+  end
+
+  describe file('/etc/masterha') do
+    it { should be_directory }
+    it { should be_owned_by('root') }
+    it { should be_grouped_into('root') }
+    it { should be_mode 755 }
   end
 end
