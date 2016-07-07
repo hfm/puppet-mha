@@ -2,6 +2,7 @@ fixtures:
   forge_modules:
     stdlib: "puppetlabs/stdlib"
     mysql: "puppetlabs/mysql"
+    inifile: "puppetlabs/inifile"
     supervisor: "proletaryo/supervisor"
     epel: "stahnma/epel"
   symlinks:

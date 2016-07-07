@@ -20,6 +20,7 @@ RSpec.configure do |c|
     # Install dependencies
     hosts.each do |host|
       on(host, puppet('module', 'install', 'puppetlabs-stdlib'))
+      on(host, puppet('module', 'install', 'puppetlabs-inifile'))
       on(host, puppet('module', 'install', 'puppetlabs-mysql'))
       on(host, puppet('module', 'install', 'proletaryo-supervisor'))
       on(host, puppet('module', 'install', 'stahnma-epel'))
