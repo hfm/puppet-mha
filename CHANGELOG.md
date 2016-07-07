@@ -1,3 +1,9 @@
+Release 0.0.12 (2016/06/02)
+---
+
+- [Make ping options customizable](https://github.com/hfm/puppet-mha/pull/19)
+  - Add params of [ping\_interval](https://code.google.com/p/mysql-master-ha/wiki/Parameters#ping_interval) and [ping\_type](https://code.google.com/p/mysql-master-ha/wiki/Parameters#ping_type)
+
 Release 0.0.11 (2016/05/31)
 ---
 
