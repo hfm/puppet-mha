@@ -1,3 +1,8 @@
+Release 0.0.13 (2016/07/07)
+---
+
+- [Update README.md](https://github.com/hfm/puppet-mha/pull/22)
+
 Release 0.0.12 (2016/06/02)
 ---
 
