@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 describe 'mha::manager class' do
-  let(:manifest) {
+  let(:manifest) do
     <<-EOS
       case $::operatingsystemmajrelease {
         '6': { include '::mha::manager' }
@@ -13,10 +13,10 @@ describe 'mha::manager class' do
         }
       }
     EOS
-  }
+  end
 
   it 'should work without errors' do
-    result = apply_manifest(manifest, :catch_failures => true)
+    result = apply_manifest(manifest, catch_failures: true)
     expect(result.exit_code).to eq 2
   end
 
