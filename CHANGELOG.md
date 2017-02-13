@@ -1,4 +1,4 @@
-Release 0.1.0 (2017/02/13)
+Release 0.1.1 (2017/02/13)
 ---
 
 - [Fixed RPM installation source can not be used and some tests](https://github.com/hfm/puppet-mha/pull/24)
