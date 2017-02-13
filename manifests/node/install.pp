@@ -13,7 +13,6 @@ class mha::node::install (
   }
 
   package { 'mha4mysql-node':
-    ensure   => $ensure,
     provider => rpm,
     source   => $rpm_path,
     require  => [

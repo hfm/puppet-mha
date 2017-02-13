@@ -33,7 +33,6 @@ class mha::manager::install {
   }
 
   package { 'mha4mysql-manager':
-    ensure   => $ensure,
     provider => rpm,
     source   => $rpm_path,
     require  => [
