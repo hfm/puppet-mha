@@ -1,3 +1,9 @@
+Release 0.1.0 (2017/02/13)
+---
+
+- [Fixed RPM installation source can not be used and some tests](https://github.com/hfm/puppet-mha/pull/24)
+  - RPM installation source now changes from Google Drive to this repository.
+
 Release 0.0.13 (2016/07/07)
 ---
 
