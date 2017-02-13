@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe 'mha::manager' do
   context 'with default values for all parameters' do
-    let(:facts) {{ :operatingsystemmajrelease => '7' }}
+    let(:facts) {{ :osfamily => 'redhat', :operatingsystem => 'CentOS', :operatingsystemmajrelease => '7' }}
 
     it { should compile }
     it { should compile.with_all_deps }
@@ -15,7 +15,7 @@ describe 'mha::manager' do
   end
 
   context 'with absent' do
-    let(:facts) {{ :operatingsystemmajrelease => '7' }}
+    let(:facts) {{ :osfamily => 'redhat', :operatingsystem => 'CentOS', :operatingsystemmajrelease => '7' }}
     let(:params) do
       {
         script_ensure: 'absent',
@@ -33,7 +33,7 @@ describe 'mha::manager' do
 
   5.upto(7) do |version|
     context "with perl packages in CentOS #{version}" do
-      let(:facts) {{ :operatingsystemmajrelease => version.to_s }}
+      let(:facts) {{ :osfamily => 'redhat', :operatingsystem => 'CentOS', :operatingsystemmajrelease => version.to_s }}
 
       case version
       when 5

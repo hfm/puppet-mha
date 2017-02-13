@@ -16,8 +16,8 @@ case $::hostname {
   }
   /node\d+/: {
     class { '::mysql::server':
-      root_password           => 'admin',
-      remove_default_accounts => true,
+      create_root_user        => false,
+      remove_default_accounts => false,
       before                  => Class['mha::node'],
     }
 
