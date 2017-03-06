@@ -1,14 +1,19 @@
-class mha::manager::install {
+class mha::manager::install (
+  $version      = $mha::manager::version,
+  $node_version = $mha::manager::node_version,
+  $ssh_user     = $mha::manager::ssh_user,
+) {
 
   require ::epel
 
-  $ensure   = "${mha::manager::version}.el${::operatingsystemmajrelease}"
+  $ensure   = "${version}.el${::operatingsystemmajrelease}"
   $rpm      = "mha4mysql-manager-${ensure}.noarch.rpm"
   $rpm_path = "/usr/local/src/${rpm}"
 
   if !defined(Class['mha::node::install']) {
     class { 'mha::node::install':
-      version => $mha::manager::node_version,
+      version  => $node_version,
+      ssh_user => $ssh_user,
     }
   }
 

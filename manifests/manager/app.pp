@@ -29,8 +29,9 @@ define mha::manager::app (
   }
 
   mha::ssh_private_key { "mha::manager::${name}":
-    path    => $ssh_key_path,
-    content => $ssh_private_key,
+    ssh_user => $ssh_user,
+    path     => $ssh_key_path,
+    content  => $ssh_private_key,
   }
 
   if $manage_daemon {
