@@ -1,5 +1,6 @@
 class mha::node::install (
-  $version = $mha::node::version,
+  $version  = $mha::node::version,
+  $ssh_user = $mha::node::ssh_user,
 ) {
 
   $ensure   = "${version}.el${::operatingsystemmajrelease}"
@@ -23,8 +24,7 @@ class mha::node::install (
 
   file { '/var/log/masterha':
     ensure => directory,
-    owner  => 'root',
-    group  => 'root',
+    owner  => $ssh_user,
     mode   => '0755',
   }
 

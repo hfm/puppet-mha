@@ -5,6 +5,7 @@ describe 'mha::ssh_private_key' do
 
   let(:params) do
     {
+      user: 'root',
       path: '/root/.ssh/id_mha',
       content: '',
     }
