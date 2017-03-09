@@ -6,6 +6,7 @@ class mha::node (
   $password        = $mha::params::password,
   $repl_user       = $mha::params::repl_user,
   $repl_password   = $mha::params::repl_password,
+  $ssh_user        = $mha::params::ssh_user,
   $ssh_key_type    = $mha::params::ssh_key_type,
   $ssh_public_key  = $mha::params::ssh_public_key,
   $ssh_key_path    = $mha::params::ssh_key_path,
@@ -18,12 +19,13 @@ class mha::node (
 
   ssh_authorized_key { 'mha::node':
     ensure => present,
-    user   => 'root',
+    user   => $ssh_user,
     type   => $ssh_key_type,
     key    => $ssh_public_key,
   }
 
   mha::ssh_private_key { 'mha::node':
+    user    => $ssh_user,
     path    => $ssh_key_path,
     content => $ssh_private_key,
     require => Ssh_authorized_key['mha::node'],

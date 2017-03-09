@@ -144,6 +144,7 @@ Install and configure mha4mysql-node, create grant permissions to access MySQL f
 - `password`: The MySQL password of the "$user" user ([ref](https://code.google.com/p/mysql-master-ha/wiki/Parameters#password)). Default to '' (empty).
 - `repl_user`: The MySQL replication username ([ref](https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_user)). Default to 'repl'.
 - `repl_password`: The MySQL password of the repl user ([ref](https://code.google.com/p/mysql-master-ha/wiki/Parameters#repl_password)). Default: '' (empty).
+- `ssh_user`: The user connecting to mha-node with ssh. Default to 'root'
 - `ssh_key_type`: The encryption type used ([ref](https://docs.puppet.com/puppet/latest/reference/types/ssh_authorized_key.html#ssh_authorized_key-attribute-type)).
 - `ssh_public_key`: The public key itself as the same as [Ssh_authorized_key key attributes](https://docs.puppet.com/puppet/latest/reference/types/ssh_authorized_key.html#ssh_authorized_key-attribute-key).
 - `ssh_key_path`: The path to the private key to manage. Default to '/root/.ssh/id\_mha'.
