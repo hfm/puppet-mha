@@ -1,3 +1,9 @@
+Release 0.2.1 (2017/03/09)
+---
+
+- [fixed bug variable name](https://github.com/hfm/puppet-mha/pull/26)
+  - Fixed bug #25 (v0.2.0)
+
 Release 0.2.0 (2017/03/09)
 ---
 
