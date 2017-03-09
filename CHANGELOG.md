@@ -1,3 +1,9 @@
+Release 0.2.0 (2017/03/09)
+---
+
+- [Specify any ssh user](https://github.com/hfm/puppet-mha/pull/25)
+  - Enable to specify ssh user to access to MHA nodes.
+
 Release 0.1.1 (2017/02/13)
 ---
 
