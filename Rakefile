@@ -1,6 +1,6 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
-PuppetLint.configuration.send("disable_140chars")
+require 'metadata-json-lint/rake_task'
 begin
   require 'puppet_blacksmith/rake_tasks'
 rescue LoadError
@@ -19,5 +19,12 @@ task :validate do
   end
 end
 
+desc 'Run metadata_lint, lint, validate, and spec tests.'
+task :test do
+  [:metadata_lint, :lint, :validate, :spec].each do |test|
+    Rake::Task[test].invoke
+  end
+end
+
 task(:default).clear
-task default: [:metadata_lint, :lint, :validate, :spec]
+task default: :test

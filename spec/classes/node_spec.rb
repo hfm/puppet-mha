@@ -1,7 +1,6 @@
 require 'spec_helper'
 describe 'mha::node' do
   context 'with default values for all parameters' do
-    let(:facts) { { operatingsystemmajrelease: '7' } }
     let(:params) do
       {
         manager: 'manager.example.com'

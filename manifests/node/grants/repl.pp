@@ -1,7 +1,7 @@
 define mha::node::grants::repl (
-  $user,
-  $password,
-  $host = $name,
+  String $user,
+  String $password,
+  String $host = $name,
 ) {
 
   mysql_user { "${user}@${host}":

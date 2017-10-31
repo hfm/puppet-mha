@@ -17,10 +17,10 @@
 # The hour at which to run the cron job. Default to '2-23/6'.
 #
 class mha::node::purge_relay_logs (
-  $ensure = $mha::node::cron_ensure,
-  $user   = $mha::node::cron_user,
-  $minute = $mha::node::cron_minute,
-  $hour   = $mha::node::cron_hour,
+  String $ensure = $mha::node::cron_ensure,
+  String $user   = $mha::node::cron_user,
+  String $minute = $mha::node::cron_minute,
+  String $hour   = $mha::node::cron_hour,
 ) {
 
   $cmd = "/usr/bin/purge_relay_logs --host localhost --user=${mha::node::user} --password=${mha::node::password} --disable_relay_log_purge"
