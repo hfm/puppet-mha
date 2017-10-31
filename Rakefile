@@ -20,4 +20,4 @@ task :validate do
 end
 
 task(:default).clear
-task default: [:lint, :validate, :spec]
+task default: [:metadata_lint, :lint, :validate, :spec]
