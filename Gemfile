@@ -10,6 +10,6 @@ group :test, :development do
   gem 'metadata-json-lint'
 end
 
-gem 'puppet-blacksmith', group: :development
+gem 'puppet-blacksmith', git: 'https://github.com/voxpupuli/puppet-blacksmith.git', group: :development
 gem 'semantic_puppet', group: :development
 gem 'beaker-rspec', group: :system_tests
