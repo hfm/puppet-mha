@@ -1,3 +1,8 @@
+Release 0.3.0 (2017/10/31)
+---
+
+- [Support Puppet 4.9 or higher](https://github.com/hfm/puppet-mha/pull/28)
+
 Release 0.2.1 (2017/03/09)
 ---
 

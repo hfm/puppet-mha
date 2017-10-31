@@ -10,12 +10,5 @@ group :test, :development do
   gem 'metadata-json-lint',     require: false
 end
 
-group :development do
-  gem 'librarian-puppet',  require: false
-  gem 'puppet-blacksmith', require: false
-end
-
-group :system_tests do
-  gem 'beaker',       require: false
-  gem 'beaker-rspec', require: false
-end
+gem 'puppet-blacksmith', require: false, group: :development
+gem 'beaker-rspec', require: false, group: :system_tests
