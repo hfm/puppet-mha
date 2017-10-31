@@ -4,11 +4,12 @@ puppetversion = ENV.key?('PUPPET_VERSION') ? "#{ENV['PUPPET_VERSION']}" : ['>= 4
 gem 'puppet', puppetversion
 
 group :test, :development do
-  gem 'puppetlabs_spec_helper', require: false
-  gem 'puppet-lint',            require: false
-  gem 'facter',                 require: false
-  gem 'metadata-json-lint',     require: false
+  gem 'puppetlabs_spec_helper'
+  gem 'puppet-lint'
+  gem 'facter'
+  gem 'metadata-json-lint'
 end
 
-gem 'puppet-blacksmith', require: false, group: :development
-gem 'beaker-rspec', require: false, group: :system_tests
+gem 'puppet-blacksmith', group: :development
+gem 'semantic_puppet', group: :development
+gem 'beaker-rspec', group: :system_tests
