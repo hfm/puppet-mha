@@ -15,7 +15,7 @@ RSpec.configure do |c|
 
   c.before :suite do
     # Install module to all hosts
-    install_dev_puppet_module(:source => module_root)
+    install_dev_puppet_module(source: module_root)
 
     # Install dependencies
     hosts.each do |host|

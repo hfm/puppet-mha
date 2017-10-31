@@ -31,9 +31,9 @@ describe 'mha::manager class' do
   end
 
   perl_pkgs = case os[:release].to_i
-              when 5 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
-              when 6 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes)
-              when 7 then %w(perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager)
+              when 5 then %w[perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager]
+              when 6 then %w[perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes]
+              when 7 then %w[perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager]
               end
 
   perl_pkgs.each do |perl_pkg|

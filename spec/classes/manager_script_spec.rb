@@ -9,7 +9,7 @@ describe 'mha::manager::script' do
   end
 
   context 'with absent' do
-    let(:params) {{ ensure: 'absent' }}
+    let(:params) { { ensure: 'absent' } }
 
     it { should contain_file('/usr/bin/mysql_online_switch').with_ensure('absent') }
   end

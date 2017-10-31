@@ -7,7 +7,7 @@ describe 'mha::ssh_private_key' do
     {
       user: 'root',
       path: '/root/.ssh/id_mha',
-      content: '',
+      content: ''
     }
   end
 

@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 describe 'mha::node class' do
-  let(:manifest) {
+  let(:manifest) do
     <<-EOS
       class { '::mysql::server':
         root_password           => 'admin',
@@ -28,10 +28,10 @@ describe 'mha::node class' do
         repl_password => 'repl',
       }
     EOS
-  }
+  end
 
   it 'should work without errors' do
-    result = apply_manifest(manifest, :catch_failures => true)
+    result = apply_manifest(manifest, catch_failures: true)
     expect(result.exit_code).to eq 2
   end
 
