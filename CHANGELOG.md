@@ -1,3 +1,8 @@
+Release 1.1.0 (2017/11/01)
+---
+
+- [Increase upper limit of puppetlabs-mysql and proletaryo-supervisor version](https://github.com/hfm/puppet-mha/commit/6deca1f)
+
 Release 1.0.0 (2017/11/01)
 ---
 
