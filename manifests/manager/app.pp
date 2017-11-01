@@ -1,24 +1,18 @@
 define mha::manager::app (
-  $nodes           = [],
-  $user            = $mha::params::user,
-  $password        = $mha::params::password,
-  $repl_user       = $mha::params::repl_user,
-  $repl_password   = $mha::params::repl_password,
-  $ping_interval   = $mha::params::ping_interval,
-  $ping_type       = $mha::params::ping_type,
-  $ssh_user        = $mha::params::ssh_user,
-  $ssh_port        = $mha::params::ssh_port,
-  $ssh_key_path    = $mha::params::ssh_key_path,
-  $ssh_private_key = $mha::params::ssh_private_key,
-  $default         = {},
-  $manage_daemon   = false
+  Array[Hash] $nodes,
+  String $user,
+  String $password,
+  String $repl_user,
+  String $repl_password,
+  Integer $ping_interval,
+  String $ping_type,
+  String $ssh_user,
+  Integer $ssh_port,
+  String $ssh_key_path,
+  String $ssh_private_key,
+  Hash $default,
+  Boolean $manage_daemon,
 ) {
-
-  include mha::params
-
-  validate_array($nodes)
-  validate_hash($default)
-  validate_bool($manage_daemon)
 
   file { "/etc/masterha/${name}.cnf":
     ensure  => present,

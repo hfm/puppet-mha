@@ -1,7 +1,7 @@
 define mha::node::grants::admin (
-  $user,
-  $password,
-  $host = $name,
+  String $user,
+  String $password,
+  String $host = $name,
 ) {
 
   mysql_user { "${user}@${host}":

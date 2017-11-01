@@ -1,11 +1,8 @@
 define mha::ssh_private_key (
-  $user,
-  $path,
-  $content,
+  String $user,
+  String $path,
+  String $content,
 ) {
-
-  validate_string($user)
-  validate_absolute_path($path)
 
   file { $path:
     owner   => $user,

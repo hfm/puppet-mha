@@ -30,13 +30,12 @@ describe 'mha::manager class' do
     it { should be_mode 755 }
   end
 
-  perl_pkgs = case os[:release].to_i
-              when 5 then %w[perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager]
-              when 6 then %w[perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes]
-              when 7 then %w[perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager]
-              end
-
-  perl_pkgs.each do |perl_pkg|
+  %w[
+    perl-Config-Tiny
+    perl-Log-Dispatch
+    perl-Parallel-ForkManager
+    perl-Time-HiRes
+  ].each do |perl_pkg|
     describe package(perl_pkg) do
       it { should be_installed }
     end
