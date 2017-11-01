@@ -1,5 +1,5 @@
 define mha::manager::app (
-  Array[String] $nodes,
+  Array[Hash] $nodes,
   String $user,
   String $password,
   String $repl_user,
