@@ -1,3 +1,8 @@
+Release 1.0.0 (2017/11/01)
+---
+
+- [Use Type and Redactor](https://github.com/hfm/puppet-mha/pull/29)
+
 Release 0.3.0 (2017/10/31)
 ---
 
