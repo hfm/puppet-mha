@@ -1,17 +1,18 @@
 define mha::manager::app (
   Array[Hash] $nodes,
-  String $user,
   String $password,
-  String $repl_user,
   String $repl_password,
-  Integer $ping_interval,
-  String $ping_type,
-  String $ssh_user,
-  Integer $ssh_port,
-  String $ssh_key_path,
   String $ssh_private_key,
-  Hash $default,
-  Boolean $manage_daemon,
+
+  String $user = 'root',
+  String $repl_user = 'repl',
+  Integer $ping_interval = 3,
+  String $ping_type = 'SELECT',
+  String $ssh_user = 'root',
+  Integer $ssh_port = 22,
+  String $ssh_key_path = '/root/.ssh/id_mha',
+  Hash $default = {},
+  Boolean $manage_daemon = false,
 ) {
 
   file { "/etc/masterha/${name}.cnf":
