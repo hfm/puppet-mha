@@ -1,3 +1,8 @@
+Release 1.1.1 (2017/11/02)
+---
+
+- [Add defaults to manager::app defined type](https://github.com/hfm/puppet-mha/pull/30)
+
 Release 1.1.0 (2017/11/01)
 ---
 
