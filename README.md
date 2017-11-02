@@ -156,8 +156,6 @@ Install and configure mha4mysql-node, create grant permissions to access MySQL f
 
 ### Private Classes
 
-- `mha::manager::install`: Install mha4mysql-manager package.
-- `mha::manager::script`: Install mysql\_online\_switch.
 - `mha::node::grants`: Create grant permissions to access MySQL for administrator and replicator.
 - `mha::node::install`: Install mha4mysql-node package.
 - `mha::node::purge_relay_logs`: Configure the cron job to run purge\_relay\_logs script.
