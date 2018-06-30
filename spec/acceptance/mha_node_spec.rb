@@ -55,7 +55,8 @@ describe 'mha::node class' do
     it { is_expected.to be_mode 755 }
   end
 
+  entry = '10 2-23/6 * * * sleep $(($RANDOM\%60)) && /usr/bin/purge_relay_logs --host localhost --user=mha --password=admin --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1'
   describe cron('purge relay logs for MHA') do
-    it { is_expected.to have_entry('10 2-23/6 * * * sleep $(($RANDOM\%60)) && /usr/bin/purge_relay_logs --host localhost --user=mha --password=admin --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1').with_user('root') }
+    it { is_expected.to have_entry(entry).with_user('root') }
   end
 end
