@@ -1,3 +1,7 @@
+## [v2.0.0](https://github.com/hfm/puppet-mha/compare/v1.1.1...v2.0.0) (2018-07-01)
+
+* pdk compatible [#31](https://github.com/hfm/puppet-mha/pull/31) ([hfm](https://github.com/hfm))
+
 Release 1.1.1 (2017/11/02)
 ---
 
