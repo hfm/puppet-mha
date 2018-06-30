@@ -15,19 +15,19 @@ describe 'mha::manager class' do
     EOS
   end
 
-  it 'should work without errors' do
+  it 'works without errors' do
     result = apply_manifest(manifest, catch_failures: true)
     expect(result.exit_code).to eq 2
   end
 
-  it 'should run a second time without changes' do
+  it 'runs a second time without changes' do
     result = apply_manifest(manifest)
     expect(result.exit_code).to eq 0
   end
 
   describe file('/usr/bin/mysql_online_switch') do
-    it { should be_file }
-    it { should be_mode 755 }
+    it { is_expected.to be_file }
+    it { is_expected.to be_mode 755 }
   end
 
   %w[
@@ -37,18 +37,18 @@ describe 'mha::manager class' do
     perl-Time-HiRes
   ].each do |perl_pkg|
     describe package(perl_pkg) do
-      it { should be_installed }
+      it { is_expected.to be_installed }
     end
   end
 
   describe package('mha4mysql-manager') do
-    it { should be_installed }
+    it { is_expected.to be_installed }
   end
 
   describe file('/etc/masterha') do
-    it { should be_directory }
-    it { should be_owned_by('root') }
-    it { should be_grouped_into('root') }
-    it { should be_mode 755 }
+    it { is_expected.to be_directory }
+    it { is_expected.to be_owned_by('root') }
+    it { is_expected.to be_grouped_into('root') }
+    it { is_expected.to be_mode 755 }
   end
 end

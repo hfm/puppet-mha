@@ -7,14 +7,14 @@ describe 'mha::ssh_private_key' do
     {
       user: 'root',
       path: '/root/.ssh/id_mha',
-      content: ''
+      content: '',
     }
   end
 
   context 'with default values for all parameters' do
-    it { should compile }
-    it { should compile.with_all_deps }
+    it { is_expected.to compile }
+    it { is_expected.to compile.with_all_deps }
 
-    it { should contain_file('/root/.ssh/id_mha') }
+    it { is_expected.to contain_file('/root/.ssh/id_mha') }
   end
 end
