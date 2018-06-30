@@ -30,32 +30,32 @@ describe 'mha::node class' do
     EOS
   end
 
-  it 'should work without errors' do
+  it 'works without errors' do
     result = apply_manifest(manifest, catch_failures: true)
     expect(result.exit_code).to eq 2
   end
 
-  it 'should run a second time without changes' do
+  it 'runs a second time without changes' do
     result = apply_manifest(manifest)
     expect(result.exit_code).to eq 0
   end
 
   describe package('perl-DBD-MySQL') do
-    it { should be_installed }
+    it { is_expected.to be_installed }
   end
 
   describe package('mha4mysql-node') do
-    it { should be_installed }
+    it { is_expected.to be_installed }
   end
 
   describe file('/var/log/masterha') do
-    it { should be_directory }
-    it { should be_owned_by('root') }
-    it { should be_grouped_into('root') }
-    it { should be_mode 755 }
+    it { is_expected.to be_directory }
+    it { is_expected.to be_owned_by('root') }
+    it { is_expected.to be_grouped_into('root') }
+    it { is_expected.to be_mode 755 }
   end
 
   describe cron('purge relay logs for MHA') do
-    it { should have_entry('10 2-23/6 * * * sleep $(($RANDOM\%60)) && /usr/bin/purge_relay_logs --host localhost --user=mha --password=admin --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1').with_user('root') }
+    it { is_expected.to have_entry('10 2-23/6 * * * sleep $(($RANDOM\%60)) && /usr/bin/purge_relay_logs --host localhost --user=mha --password=admin --disable_relay_log_purge >> /var/log/masterha/purge_relay_logs.log 2>&1').with_user('root') }
   end
 end

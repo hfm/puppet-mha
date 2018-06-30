@@ -20,7 +20,7 @@ module VagrantPlugins
         env[:ui].info 'Running pre-provisioner: librarian-puppet...'
 
         Vagrant::Util::Env.with_clean_env do
-          ENV.reject! {|_,v| v.match /vagrant/i}
+          ENV.reject! { |_, v| v.match %r{vagrant}i }
           cmd = 'bundle exec librarian-puppet install --path tests/modules --verbose'
           env[:ui].detail `#{cmd}`
         end
@@ -30,7 +30,6 @@ module VagrantPlugins
     end
   end
 end
-
 
 platforms = {
   centos6: 'puppetlabs/centos-6.6-64-puppet',
@@ -51,7 +50,7 @@ Vagrant.configure(2) do |config|
   module_name = metadata['name'].split('-').last
 
   config.vm.provision :shell,
-    inline: "ln -sfn /vagrant/ /vagrant/tests/modules/#{module_name}"
+                      inline: "ln -sfn /vagrant/ /vagrant/tests/modules/#{module_name}"
 
   config.vm.provision :puppet do |puppet|
     puppet.environment_path = '.'
@@ -70,14 +69,14 @@ Vagrant.configure(2) do |config|
     c.vm.network :private_network, ip: private_ip if private_ip
 
     c.vm.provider :virtualbox do |vbox|
-      vbox.customize ["modifyvm", :id, "--memory", memory]
-      vbox.customize ["modifyvm", :id, "--cpus",   cpu]
+      vbox.customize ['modifyvm', :id, '--memory', memory]
+      vbox.customize ['modifyvm', :id, '--cpus',   cpu]
 
-      vbox.customize ["modifyvm", :id, "--hpet", "on"]
-      vbox.customize ["modifyvm", :id, "--acpi", "off"]
+      vbox.customize ['modifyvm', :id, '--hpet', 'on']
+      vbox.customize ['modifyvm', :id, '--acpi', 'off']
 
-      vbox.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
-      vbox.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
+      vbox.customize ['modifyvm', :id, '--natdnsproxy1', 'off']
+      vbox.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
     end
   end
 
