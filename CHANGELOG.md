@@ -1,3 +1,9 @@
+# Changelog
+
+## [v2.1.0](https://github.com/hfm/puppet-mha/compare/v2.0.0...v2.1.0) (2018-10-02)
+
+* Support Puppet 6.x and stdlib 5.x [#32](https://github.com/hfm/puppet-mha/pull/32) ([hfm](https://github.com/hfm))
+
 ## [v2.0.0](https://github.com/hfm/puppet-mha/compare/v1.1.1...v2.0.0) (2018-07-01)
 
 * pdk compatible [#31](https://github.com/hfm/puppet-mha/pull/31) ([hfm](https://github.com/hfm))
