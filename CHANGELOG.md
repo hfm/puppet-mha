@@ -1,5 +1,9 @@
 # Changelog
 
+## [v2.2.0](https://github.com/hfm/puppet-mha/compare/v2.1.0...v2.2.0) (2018-11-13)
+
+* Support puppetlabs-mysql 7.x [#33](https://github.com/hfm/puppet-mha/pull/33) ([hfm](https://github.com/hfm))
+
 ## [v2.1.0](https://github.com/hfm/puppet-mha/compare/v2.0.0...v2.1.0) (2018-10-02)
 
 * Support Puppet 6.x and stdlib 5.x [#32](https://github.com/hfm/puppet-mha/pull/32) ([hfm](https://github.com/hfm))
